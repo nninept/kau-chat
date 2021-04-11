@@ -1,0 +1,39 @@
+.Links {
+  position: relative;
+  z-index: 1;
+  padding-top: 15px;
+  display: flex;
+
+  height: 100vh;
+}
+
+.Links:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #232323;
+  opacity: 0.88;
+}
+
+.Links__line1 {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  
+  flex-direction: column;
+}
+
+.Links__line2 {
+  text-align: center;
+}
+
+.Links__borderLine {
+  margin: 0 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  border-bottom: 1px solid #cdcdcd;
+}
