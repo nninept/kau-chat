@@ -94,17 +94,7 @@ ipcMain.handle('logout', async (e, arg) => {
   mainWindow.loadFile('./views/html/login.html')
 })
 
-ipcMain.handle('get-lec-lists', async (e, arg) => {
-  console.log('requst for lecture')
-  let lmsCookie = browser.cookie.find((elem, idx, arr) => elem.name=='MoodleSession')
-  let pageData = await axios.get('http://lms.kau.ac.kr/', {headers: {
-    Cookie : `${lmsCookie.name}=${lmsCookie.value}`
-  }});
-  return pageData.data
-})
-
-ipcMain.handle('get-lec-page', async (e, arg) => {
-  console.log('get-info')
+ipcMain.handle('get-lms', async (event, arg) => {
   let lmsCookie = browser.cookie.find((elem, idx, arr) => elem.name=='MoodleSession')
   let pageData = await axios.get(arg, {headers: {
     Cookie : `${lmsCookie.name}=${lmsCookie.value}`
@@ -115,26 +105,26 @@ ipcMain.handle('get-lec-page', async (e, arg) => {
 ipcMain.handle('open-npotal', async (e, arg) => {
   if(!subWindow){
     subWindow = new BrowserWindow()
-    subWindow.loadURL('https://nportal.kau.ac.kr/webcrea/GB03/mdi/login.html')
+    await subWindow.loadURL('https://nportal.kau.ac.kr/webcrea/GB03/mdi/login.html')
     subWindow.webContents.openDevTools()
     subWindow.on('closed', () => {
       subWindow = undefined;
     });//#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input
 
-    subWindow.webContents.executeJavaScript(`
-    (async () => { 
-      console.log("start")
-      let id = await document.querySelector("#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input")
-      console.log(id)
-      id.value = "2019125061"
-      console.log(id)
-      console.log(id.value)
-      let pwd = await document.querySelector("#mainForm3 tbody tr:nth-child(3) input")
-      pwd.value = "david990601*"
-      let btn = document.querySelector('#mainForm3 tbody tr:nth-child(1) td:nth-child(3) input')
-      btn.click()
-    })() 
-    `)
+      subWindow.webContents.executeJavaScript(`
+      (async () => { 
+        console.log("start")
+        let id = await document.querySelector("#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input")
+        console.log(id)
+        id.value = "2019125061"
+        console.log(id)
+        console.log(id.value)
+        let pwd = await document.querySelector("#mainForm3 tbody tr:nth-child(3) input")
+        pwd.value = "david990601*"
+        let btn = document.querySelector('#mainForm3 tbody tr:nth-child(1) td:nth-child(3) input')
+        btn.click()
+      })() 
+      `)
   } else {
     subWindow.focus()
   }

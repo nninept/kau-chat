@@ -2,13 +2,14 @@ import LectureTitle from '../LectureTitle/LectureTitle';
 
 
 
-function LectureList(props) {
+function LectureList({lectureTitle}) {
   return (
     <div className="lms">
         <ul className="lecture-title">
-            {props.lectureTitle.map((item,index)=>{
-                return <LectureTitle key={index} src={item.link} title = {item.title} onClicked={props.onClickTitle}/>
-            })}
+            { (lectureTitle) ? lectureTitle.map((item,index)=>{
+                return <LectureTitle key={index} link={item.link} title = {item.title} />
+            }) : <h3>Loading</h3>
+          }
         </ul>
   </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "./IconLink.scss";
 
 const {ipcRenderer} = window.require('electron')
@@ -6,21 +7,28 @@ const {ipcRenderer} = window.require('electron')
 Links 안에서 사용할 링크 ㅋ
 */
 
-function IconLink(props) {
-
-  const linkHandler = ()=>{
-    if(props.pageNum === 0 || props.pageNum === 1) props.onLinkClicked(props.pageNum)
-    else if (props.pageNum === 2) ipcRenderer.invoke('open-npotal')
+function IconLink({link, src, alt, title}) {
+  let npotal = false
+  if (link==="npotal") npotal = true  
+  
+  const openPotal = ()=>{
+    ipcRenderer.invoke('open-npotal')
   }
 
   return (
     <div className="IconLink">
-      <a onClick={linkHandler}>
+      {(npotal) ? <a onClick={openPotal}>
         <li className="IconLink__content">
-          <img src={props.src} alt={props.alt} />
-          <div>{props.title}</div>
+          <img src={src} alt={alt} />
+          <div>{title}</div>
         </li>
-      </a>
+      </a> : 
+      <Link to={link}>
+        <li className="IconLink__content">
+          <img src={src} alt={alt} />
+          <div>{title}</div>
+        </li>
+      </Link> }
     </div>
   );
 }

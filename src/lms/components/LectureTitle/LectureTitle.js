@@ -1,13 +1,15 @@
+import {Link} from "react-router-dom"
 import "./LectureTitle.css"
 
-function LectureTitle(props) {
-  const addOnClicked = ()=>{
-    props.onClicked(props.src)
-    console.log(props.src)
-  }
+function LectureTitle({link, title}) {
   return (
     <div className="title" >
-        <a onClick={addOnClicked}>{props.title}</a>
+        <Link to={{
+          pathname : "/home/lms/detail",
+          state: {
+            link
+          }
+        }}>{title}</Link>
     </div>
   );
 }

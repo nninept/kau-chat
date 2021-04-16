@@ -1,7 +1,6 @@
 import React from "react";
 // import CountDown from "../../components/CountDown/CountDown";
 import Notice from "../../components/Notice/Notice";
-import Quotes from "../../components/Quotes/Quotes";
 import Virus from "../../components/Virus/Virus";
 import Weather from "../../components/Weather/Weather";
 import Heroku from "../../components/Heroku/Heroku";

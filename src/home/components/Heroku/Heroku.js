@@ -5,7 +5,7 @@ import "./Heroku.css";
 function Heroku() {
     const [notice, setNotice] = useState("");
   useEffect(() => {
-      axios.get('https://kau-project.herokuapp.com/contents')
+      axios.get('https://kau-project.herokuapp.com/api/current-notice')
       .then(res => setNotice(res.data["content"]))
   }, []);
 

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Redirect, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 // import {ipcRenderer} from 'electron'
 import ErrorMessage from '../components/Error/ErrorMessage'
 import "./Login.css"
@@ -13,9 +13,8 @@ function isSessionOn(){
 function Login() {
   const history = useHistory();
   const loginInfo = isSessionOn()
-  loginInfo['isAutoLogin'] = true
-  console.log(loginInfo)
   if(loginInfo){
+    loginInfo['isAutoLogin'] = true
     electron.ipcRenderer.invoke('login', loginInfo).then(res => history.push('/home'))
   }
 

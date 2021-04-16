@@ -1,13 +1,14 @@
 import {useEffect,useState} from 'react';
+import {Link} from "react-router-dom"
 import cheerio from 'cheerio'
 
 import "./LectureInfo.css"
 const {ipcRenderer} = window.require('electron')
 
-function LectureInfo(props) {
+function LectureInfo({location}) {
     const [pageInfo, setPageInfo] = useState('')
     useEffect(()=>{
-        ipcRenderer.invoke('get-lec-page', props.link)
+        ipcRenderer.invoke('get-lms', location.state.link)
         .then(pageData=>{
             let $ = cheerio.load(pageData)
             console.log(pageData)
@@ -18,7 +19,7 @@ function LectureInfo(props) {
     })
   return (
       <div className="LectureInfo" >
-        <a onClick={props.onClickButton}>back</a>
+        <Link to={"/home/lms"}>back</Link>
         <div>
         {pageInfo}
         </div>

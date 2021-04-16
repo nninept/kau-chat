@@ -1,5 +1,6 @@
 import cheerio from 'cheerio'
 import {useState, useEffect} from 'react'
+import {Route} from "react-router-dom";
 import LectureList from '../components/LectureList/LectureList';
 import LectureInfo from '../components/LectureInfo/LectureInfo'
 const {ipcRenderer} = window.require('electron')
@@ -7,23 +8,11 @@ const {ipcRenderer} = window.require('electron')
 
 
 
-function Lms() {
-    const renderPageNum = {"titleList":0, "lecInfo":1}
-    const [lecUrl, setLecUrl]= useState("None") 
-    const [renderPage, setRenderPage] = useState(renderPageNum["titleList"])
-    const addTitleClickHandler = (pageUrl) => {
-        setLecUrl(pageUrl)
-        setRenderPage(renderPageNum["lecInfo"])
-        console.log("good")
-    }
-
-    const addButtonClickHandler = () => {
-        setRenderPage(renderPageNum["titleList"])
-    }
-
+function Lms({match}) {
     const [lecList, setLecList] = useState([])
+
     useEffect(()=>{
-    ipcRenderer.invoke('get-lec-lists')
+    ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/')
     .then((pageData) => {
         let lecTemp = []
         let $ = cheerio.load(pageData)
@@ -36,12 +25,12 @@ function Lms() {
         })
         setLecList(lecTemp)
     })
-    },[renderPage])
+    },[])
 
     return (
         <div className="lms">
-        {renderPage===0 && <LectureList lectureTitle={lecList} onClickTitle={addTitleClickHandler}/>}
-        {renderPage===1 && <LectureInfo link={lecUrl} onClickButton={addButtonClickHandler} />}
+        <Route exact path={match.path}> <LectureList lectureTitle={lecList} /> </Route>
+        <Route path={match.path + "/detail"} component={LectureInfo}/>
     </div>
     );
 }
