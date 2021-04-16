@@ -1,0 +1,27 @@
+.Chat {
+  padding: 0rem 3rem 3rem 3rem;
+}
+
+.Chat-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Chat-half {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .Chat {
+    padding: 0rem 1rem 4rem 1rem;
+  }
+  .Chat-half {
+    width: 20rem;
+  }
+}

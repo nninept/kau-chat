@@ -1,0 +1,44 @@
+.channel {
+  display: flex;
+  justify-content: center;
+}
+
+.message-text {
+  width: 30rem;
+  height: 2rem;
+  margin-right: 1rem;
+  padding: 0 10px;
+  border: 1px solid #cdcdcd;
+  border-radius: 25px;
+}
+
+.message-text:focus {
+  outline: none;
+}
+
+.message-list {
+  width: 100%;
+  height: 60vh;
+  overflow: scroll;
+}
+
+.message-form {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 65px;
+  width: 90%;
+  margin: 1rem 0;
+}
+
+.MuiFab-root {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+@media (max-width: 800px) {
+  .message-text {
+    width: 100%;
+  }
+}

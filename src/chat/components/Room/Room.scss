@@ -1,0 +1,23 @@
+.Room {
+  border: 1px solid #cdcdcd;
+  border-radius: 12px;
+  width: 90%;
+  margin: 1rem 0;
+}
+
+.Room-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 1rem 0.3rem 1.5rem;
+}
+
+.Room-name {
+  margin: 0.75rem 1rem;
+}
+
+@media (max-width: 800px) {
+  .Room {
+    margin: 0.5rem 0;
+  }
+}

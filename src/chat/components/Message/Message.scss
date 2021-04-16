@@ -1,0 +1,32 @@
+.Message {
+  background-color: #d7dfee;
+  width: 30rem;
+  margin: 0 1.3rem 1rem 1.3rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+}
+
+.Message-first-line {
+  span {
+    display: inline-block;
+    margin-right: 0.6rem;
+  }
+  margin-bottom: 0.3rem;
+}
+
+.Message-username {
+  color: #606163;
+  font-size: 0.8rem;
+}
+
+.Message-time {
+  color: #86888b;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 800px) {
+  .Message {
+    width: auto;
+    margin: 0 1.3rem 1rem 1.3rem;
+  }
+}
