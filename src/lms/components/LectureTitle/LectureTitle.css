@@ -1,7 +1,17 @@
-.title a:hover {
-    color:blue;
+.lecture-title{
+    margin-bottom: 10px;
+}
+
+.lecture-title .title:hover {
     cursor:pointer;
 }
 
-.title{
+.lecture-title span{
+    font-size:10px;
+    color: red;
+}
+
+.lecture-title .prof{
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
 }

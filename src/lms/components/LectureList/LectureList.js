@@ -1,13 +1,13 @@
 import LectureTitle from '../LectureTitle/LectureTitle';
-
+import "./LectureList.css"
 
 
 function LectureList({lectureTitle}) {
   return (
-    <div className="lms">
-        <ul className="lecture-title">
+    <div className="lecture-titles">
+        <ul>
             { (lectureTitle) ? lectureTitle.map((item,index)=>{
-                return <LectureTitle key={index} link={item.link} title = {item.title} />
+                return <LectureTitle key={index} link={item.link} title = {item.title} prof={item.prof}/>
             }) : <h3>Loading</h3>
           }
         </ul>

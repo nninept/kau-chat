@@ -33,10 +33,10 @@ function Links(props) {
         {/* 두번째 라인 */}
         {/* <ul className="Links__line2"> */}
         <IconLink
-          title="수강신청"
+          title="KAU 위키"
           src="./pick.svg"
-          alt="수강신청"
-          link="/home"
+          alt="KAU 위키"
+          link="/home/wiki"
         />
         <IconLink
           title="역량관리시스템"

@@ -2,44 +2,20 @@
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css"); 
 
 * {
-  margin: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: "NanumSquare";
 }
 
-.Home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-size: cover;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.Wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 100vw;
-  height: 100vh;
-}
-
-.Top {
-  display: flex;
-  flex: 1;
-  width: 100%;
-}
-
-.Main {
-  display: flex;
-  flex: 5;
-  width: 100%;
-}
-
-.Footer {
-  display: flex;
-  flex: 1;
-  width: 100%;
+code {
+font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
 }

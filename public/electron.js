@@ -1,5 +1,5 @@
 // public/electron.ts
-const { app, BrowserWindow, ipcMain, session, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
 const Browser = require('./browser')

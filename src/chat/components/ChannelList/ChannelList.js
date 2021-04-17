@@ -5,7 +5,7 @@ import "./ChannelList.scss";
 function Chat() {
   return (
     <div className="Chat">
-      <div>채널</div>
+      <div><h3>채널</h3></div>
       <div className="Chat-container">
         <section className="Chat-half">
           <Room major="경영학부" id="business" current={2}></Room>

@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import Footer from "./Footer/Footer";
 import Main from "./Main/Main";
-import { useEffect, useState } from "react";
+import "./Home.css"
 
 function Home() {
   const [backgroundIndex, setBackgroundIndex] = useState(0);
@@ -16,11 +17,8 @@ function Home() {
   };
   return (
     <div className="Home" style={styles.background}>
-      <div className="Wrapper">
-        {/* <Top></Top> */}
         <Main></Main>
         <Footer></Footer>
-      </div>
     </div>
   );
 }

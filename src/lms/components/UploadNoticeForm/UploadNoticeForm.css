@@ -1,0 +1,27 @@
+.notice-form a {
+    display: flex;
+    width: 200px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-bottom:1px solid gray;
+}
+
+.media-body{
+    margin-left: 5px;
+}
+
+.media-body .title{
+    font-size: 14px;
+}
+
+.media-body .week{
+    font-size: 12px;
+}
+
+.media-body .timeago{
+    font-size: 10px;
+}
+
+.media-body .info{
+    font-size: 10px;
+}

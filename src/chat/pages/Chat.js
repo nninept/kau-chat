@@ -3,11 +3,12 @@ import { HashRouter as Router, Route, Switch} from "react-router-dom";
 import Top from "../components/Top/Top";
 import ChannelList from "../components/ChannelList/ChannelList";
 import Channel from "../components/Channel/Channel";
+import "./Chat.css"
 
 function Chat({match}) {
   return (
     <Router>
-      <div className="Chat">          
+      <div className="chat-page">          
         <Switch>
           <Route
             path={match.path}
