@@ -17,7 +17,7 @@ function LectureTitle({link, title, prof}) {
           }
         }}>
           <div className="course">
-            <h3 className="title">{title}<span clssName="new">{newSpan}</span></h3>
+            <h3 className="title">{title}<span className="new">{newSpan}</span></h3>
             <p className="prof">{prof}</p></div>
         </Link>
     </div>

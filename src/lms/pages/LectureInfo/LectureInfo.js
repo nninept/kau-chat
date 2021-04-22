@@ -8,8 +8,8 @@ import LectureContents from "../../components/LectureContents/LectureContents"
 const {ipcRenderer} = window.require('electron')
 
 function LectureInfo({location}) {
-    const [weekContents, setWeekContents] = useState([])
-    const [lecNotice, setLecNotice] = useState([])
+    const [weekContents, setWeekContents] = useState(null)
+    const [lecNotice, setLecNotice] = useState(null)
     useEffect(()=>{
         ipcRenderer.invoke('get-lms', location.state.link)
         .then(pageData=>{
@@ -26,12 +26,25 @@ function LectureInfo({location}) {
               })
               setLecNotice(noticeList)
             })
-            // new Promise((res, rej)=>{
-            //   let section = $(".section.main.clearfix")
-            //   let current = section[1]
-            //   let weeks = Array.from(section).slice(2)
-            //   setWeekContents([current, weeks])
-            // })
+            new Promise((res, rej)=>{
+              let section = $(".section.main.clearfix")
+              let weeks = Array.from(section).slice(1)
+              let weeksInfo = weeks.map(elem => {
+                let jElem = $(elem)
+                let title = jElem.find(".sectionname a").text()
+                let weekBlock = jElem.find(".section.img-text li a")
+                let weekBlockContents = []
+                weekBlock.each((index,elem) => {
+                  elem = $(elem)
+                  let contentLink = elem.attr('href')
+                  let imgSrc = elem.find("img").attr("src")
+                  let text = elem.find(".instancename").text()
+                  weekBlockContents.push( {contentLink, imgSrc, text} )
+                })
+                return {title, weekBlockContents}
+              })
+              setWeekContents(weeksInfo)
+            })
         })
     },[])
   return (

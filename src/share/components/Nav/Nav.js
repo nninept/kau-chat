@@ -1,10 +1,15 @@
 import React from "react";
 import "./Nav.scss";
+import {Link} from "react-router-dom"
 import IconLink from "../IconLink/IconLink";
+
 function Links(props) {
+  const logoutHandler = ()=>{
+    console.log(window.localStorage.clear())
+  }
   return (
-    <div className="Links">
-      <ul className="Links__line1">
+    <div className="links">
+      <ul >
       <IconLink
           title="학교 홈페이지"
           src="./university.svg"
@@ -29,9 +34,7 @@ function Links(props) {
           alt="채팅방"
           link="/home/chat"
         />
-        {/* </ul> */}
-        {/* 두번째 라인 */}
-        {/* <ul className="Links__line2"> */}
+
         <IconLink
           title="KAU 위키"
           src="./pick.svg"
@@ -50,8 +53,8 @@ function Links(props) {
           alt="중앙도서관"
           link="/home"
         />
+        <Link className="logout" to={"/"} onClick={logoutHandler}>Logout</Link>
       </ul>
-      {/* <div className="Links__borderLine"></div> */}
     </div>
   );
 }

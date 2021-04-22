@@ -2,11 +2,9 @@
 const { app, BrowserWindow, ipcMain} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
-const Browser = require('./browser')
 const axios = require('axios')
-let browser = new Browser()
 // 1. Gabage Collection이 일어나지 않도록 함수 밖에 선언함.
-let mainWindow, subWindow;
+let mainWindow, subWindow, browser;
 
 async function getCookieWithLogin(arg){
   await browser.initBrowser()
@@ -17,7 +15,6 @@ async function getCookieWithLogin(arg){
       console.log(err)
     })    
   })
-  if(!arg['isAutoLogin']) await mainWindow.webContents.executeJavaScript(`localStorage.setItem("loginInfo", JSON.stringify(${JSON.stringify(arg)}))`)
 }
 return isLoginSuccess
 }
@@ -82,16 +79,10 @@ app.on('activate', () => {
 
 
 ipcMain.handle('login', async (event, arg) => {
+  const Browser = require('./browser')
+  browser = new Browser()
   let isLoginSuccess = getCookieWithLogin(arg)
 return isLoginSuccess
-})
-
-ipcMain.handle('logout', async (e, arg) => {
-  mainWindow.webContents.session.clearStorageData()
-  browser.destroy()
-  browser = new Browser()
-  browser.initBrowser()
-  mainWindow.loadFile('./views/html/login.html')
 })
 
 ipcMain.handle('get-lms', async (event, arg) => {
@@ -128,13 +119,4 @@ ipcMain.handle('open-npotal', async (e, arg) => {
   } else {
     subWindow.focus()
   }
-})
-
-
-ipcMain.handle('test', async (e, arg) => {
-  let isLoginSuccess = await browser.loginLmsPage(arg['id'], arg['pwd']);
-  if (isLoginSuccess) {
-    await mainWindow.webContents.executeJavaScript(`localStorage.setItem("loginInfo", JSON.stringify(${JSON.stringify(arg)}))`)
-  }
-  mainWindow.loadURL('https://lms.kau.ac.kr/login.php')
 })

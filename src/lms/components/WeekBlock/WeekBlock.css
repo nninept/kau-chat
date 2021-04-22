@@ -1,0 +1,12 @@
+.week-block {
+    padding:20px;
+    border:1px solid;
+}
+
+.week-block h4 {
+    font-size: 20px;
+}
+
+.week-block .content{
+    margin: 10px 20px;
+}

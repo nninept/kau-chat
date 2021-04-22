@@ -1,6 +1,4 @@
 import {useState} from "react";
-import {useHistory} from 'react-router-dom'
-// import {ipcRenderer} from 'electron'
 import ErrorMessage from '../components/Error/ErrorMessage'
 import "./Login.css"
 const electron = window.require('electron')
@@ -10,13 +8,10 @@ function isSessionOn(){
   let loginInfo = JSON.parse(sessStorage)
   return loginInfo
 }
-function Login() {
-  const history = useHistory();
+function Login(props) {
+  const history = props.history;
   const loginInfo = isSessionOn()
-  if(loginInfo){
-    loginInfo['isAutoLogin'] = true
-    electron.ipcRenderer.invoke('login', loginInfo).then(res => history.push('/home'))
-  }
+  if(loginInfo) electron.ipcRenderer.invoke('login', loginInfo).then(res => history.push('/home'))
 
   const [enteredId, setEnteredId] = useState('')
   const [enteredPwd, setEnteredPwd] = useState('')
@@ -34,8 +29,8 @@ function Login() {
     event.preventDefault();
 
     
-    let isLoginSuccess = await electron.ipcRenderer.invoke('login', {id:enteredId, pwd:enteredPwd, isAutoLogin:false})
-    // history.push('/home')
+    let isLoginSuccess = await electron.ipcRenderer.invoke('login', {id:enteredId, pwd:enteredPwd})
+    window.localStorage.setItem("loginInfo", {id:enteredId, pwd:enteredPwd})
     if(isLoginSuccess) history.push('/home')
     else setErrorState(!isLoginSuccess)
   }
