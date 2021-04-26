@@ -28,7 +28,7 @@ function createWindow() {
     width:800,
     height:600,
     resizable: true,
-    frame:true,
+    frame:false,
     webPreferences: {
       // 2.
       // 웹 애플리케이션을 데스크탑으로 모양만 바꾸려면 안 해도 되지만,
@@ -77,6 +77,11 @@ app.on('activate', () => {
 });
 
 
+ipcMain.handle("trays",(event,arg)=>{
+  if(arg==="close") mainWindow.close();
+  else if(arg==="maximize") mainWindow.maximize();
+  else if(arg==="minimize") mainWindow.minimize();
+})
 
 ipcMain.handle('login', async (event, arg) => {
   const Browser = require('./browser')

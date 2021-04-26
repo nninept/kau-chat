@@ -1,0 +1,17 @@
+.trays{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #232323;
+    -webkit-app-region:drag;
+    height:25px
+}
+
+.tray {
+    -webkit-app-region:none;
+    margin: auto 3px;
+    height:15px
+}
+
+.tray:hover{
+    height:17px
+}
