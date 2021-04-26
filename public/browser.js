@@ -7,7 +7,7 @@ class Browser{
     cookie = [];
     async initBrowser(){
         this.browser = await puppeteer.launch({
-                        headless:false
+                        headless:true
                         });
         this.lmsPage = await this.browser.newPage();
         await this.lmsPage.goto('https://lms.kau.ac.kr/login/index.php')
