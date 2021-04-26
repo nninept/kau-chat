@@ -7,12 +7,12 @@ function LectureContent({weekContents}) {
       <div className="lecture-contents" >
         <div className="this-week">
         {(weekContents) ? <WeekBlock blockContents={weekContents[0]}/>
-            : "Loading"}
+            : <h3>Loading</h3>}
         </div>
         <div className="weeks">
             {(weekContents) ? Array.from(weekContents).slice(1).map((elem,index)=>{
               return <WeekBlock key={index} blockContents={elem}/>
-            }): "Loading"}
+            }): <h3>Loading</h3>}
         </div>
     </div>
   );

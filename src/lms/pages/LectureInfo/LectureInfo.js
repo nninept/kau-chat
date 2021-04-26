@@ -11,41 +11,43 @@ function LectureInfo({location}) {
     const [weekContents, setWeekContents] = useState(null)
     const [lecNotice, setLecNotice] = useState(null)
     useEffect(()=>{
-        ipcRenderer.invoke('get-lms', location.state.link)
-        .then(pageData=>{
-            let $ = cheerio.load(pageData)
-            new Promise((res, rej)=>{
-              let notice = $('#page-container > div.course-header > div > div > div > div.col-sm-4.upcommings.hidden-xs a')
-              let noticeList = []
-              notice.each((indx, elem)=>{
-                elem = $(elem)
-                let link = elem.attr('href')
-                let date = elem.find(".date").text()
-                let title = elem.find("h5").text()
-                noticeList.push({link, date, title})
-              })
-              setLecNotice(noticeList)
-            })
-            new Promise((res, rej)=>{
-              let section = $(".section.main.clearfix")
-              let weeks = Array.from(section).slice(1)
-              let weeksInfo = weeks.map(elem => {
-                let jElem = $(elem)
-                let title = jElem.find(".sectionname a").text()
-                let weekBlock = jElem.find(".section.img-text li a")
-                let weekBlockContents = []
-                weekBlock.each((index,elem) => {
-                  elem = $(elem)
-                  let contentLink = elem.attr('href')
-                  let imgSrc = elem.find("img").attr("src")
-                  let text = elem.find(".instancename").text()
-                  weekBlockContents.push( {contentLink, imgSrc, text} )
-                })
-                return {title, weekBlockContents}
-              })
-              setWeekContents(weeksInfo)
-            })
+      ipcRenderer.invoke('get-lms', location.state.link)
+      .then(pageData=>{
+          let $ = cheerio.load(pageData)
+          let notice = $('#page-container > div.course-header > div > div > div > div.col-sm-4.upcommings.hidden-xs a')
+          let noticeList = []
+          notice.each((indx, elem)=>{
+            elem = $(elem)
+            let link = elem.attr('href')
+            let date = elem.find(".date").text()
+            let title = elem.find("h5").text()
+            noticeList.push({link, date, title})
+          })
+          setLecNotice(noticeList)
+      })
+    },[])
+    useEffect(()=>{
+      ipcRenderer.invoke('get-lms', location.state.link)
+      .then(pageData=>{
+        let $ = cheerio.load(pageData)
+        let section = $(".section.main.clearfix")
+        let weeks = Array.from(section).slice(1)
+        let weeksInfo = weeks.map(elem => {
+          let jElem = $(elem)
+          let title = jElem.find(".sectionname a").text()
+          let weekBlock = jElem.find(".section.img-text li a")
+          let weekBlockContents = []
+          weekBlock.each((index,elem) => {
+            elem = $(elem)
+            let contentLink = elem.attr('href')
+            let imgSrc = elem.find("img").attr("src")
+            let text = elem.find(".instancename").text()
+            weekBlockContents.push( {contentLink, imgSrc, text} )
+          })
+          return {title, weekBlockContents}
         })
+        setWeekContents(weeksInfo)
+      })
     },[])
   return (
       <div className="lecture-info" >

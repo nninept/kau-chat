@@ -1,7 +1,41 @@
 .channel {
+  width: 100%;
+  padding: 20px;
+}
+
+.message-list {
+  padding: 10px;
+  height: 60vh;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  border: solid 1px grey;
+  border-radius: 10px;
+}
+
+.message-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.message-list::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius:10px;
+}
+
+.message-list::-webkit-scrollbar-track{
+  background-color: gray;
+  border-radius: 10px;
+}
+
+.message-form {
+  position: absolute;
   display: flex;
   justify-content: center;
+  align-items: center;
+  bottom: 65px;
+  width: 90%;
+  margin: 1rem 0;
 }
+
 
 .message-text {
   width: 30rem;
@@ -14,22 +48,6 @@
 
 .message-text:focus {
   outline: none;
-}
-
-.message-list {
-  width: 100%;
-  height: 60vh;
-  overflow: scroll;
-}
-
-.message-form {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 65px;
-  width: 90%;
-  margin: 1rem 0;
 }
 
 .MuiFab-root {

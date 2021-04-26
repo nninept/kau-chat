@@ -30,7 +30,7 @@ function Login(props) {
 
     
     let isLoginSuccess = await electron.ipcRenderer.invoke('login', {id:enteredId, pwd:enteredPwd})
-    window.localStorage.setItem("loginInfo", {id:enteredId, pwd:enteredPwd})
+    window.localStorage.setItem("loginInfo", JSON.stringify({id:enteredId, pwd:enteredPwd}))
     if(isLoginSuccess) history.push('/home')
     else setErrorState(!isLoginSuccess)
   }

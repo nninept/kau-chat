@@ -35,13 +35,10 @@ function Channel() {
   const [currentSocket, setCurrentSocket] = useState(null);
 
   useEffect(() => {
-    // const socket = io("http://localhost:5000", { reconnection: false });
     const socket = io('https://kau-project.herokuapp.com/',{ reconnection: false });
-    console.log(socket)
     setCurrentSocket(socket);
-    socket.emit("joinRoom", { username: "chanmin", room: channelName });
     socket.on("message", (message) => {
-      setMsgList((msgList) => [message, ...msgList]);
+      setMsgList((msgList) => [...msgList,message]);
     });
 
     return () => {
@@ -56,8 +53,7 @@ function Channel() {
 
   onMessageSubmit = (e) => {
     e.preventDefault();
-    e.target.elements[0].focus();
-    currentSocket.emit("sendMessage", msg);
+    currentSocket.emit("sendMessage", {msg, name:"unknown"});
     setMsg("");
   };
 
@@ -72,7 +68,8 @@ function Channel() {
             time={msg.time}
           ></Message>
         ))}
-      </div>{" "}
+      </div>
+
       <form onSubmit={onMessageSubmit} className="message-form">
         <input
           className="message-text"

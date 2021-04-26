@@ -12,8 +12,7 @@ function Lms({match}) {
     const [lecList, setLecList] = useState([])
     const [uploadList, setUploadList] = useState([])
 
-    useEffect(()=>{
-        new Promise( async (res, rej)=> {
+    useEffect(async ()=>{
         let pageData = await ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/')
         console.log("title promise")
         let lecTemp = []
@@ -27,9 +26,9 @@ function Lms({match}) {
             lecTemp.push({title, link, prof})
         })
         setLecList(lecTemp)
-        })
+    },[])
 
-        new Promise( async(res, rej)=> {
+    useEffect(async ()=>{
         let pageData = await ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/local/ubnotification/index.php')
         console.log("upload Props")
         let noticeTemp = []
@@ -46,7 +45,6 @@ function Lms({match}) {
             noticeTemp.push({lecLink, imgSrc, lecTitle,timeago, info})
         })
         setUploadList(noticeTemp)
-        })
 
         // new Promise( async(res, rej)=> {
         //     let pageData = await ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/')

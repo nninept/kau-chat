@@ -6,6 +6,11 @@
   border-radius: 8px;
 }
 
+.message-content{
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
 .Message-first-line {
   span {
     display: inline-block;
