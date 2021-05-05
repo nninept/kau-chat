@@ -17,6 +17,7 @@ function Main() {
     slidesToScroll: 1
   };
   return (
+    <Slider {...settings}>
     <div className="Main">
       <div className="Main__container">
         <article className="Main__container__upper">
@@ -39,7 +40,7 @@ function Main() {
         </article>
       </div>
     </div>
-   
+    </Slider>
 
   );
 }
