@@ -7,6 +7,7 @@ import Wiki from '../../../wiki/pages/Wiki'
 import "./Skeleton.css"
 
 function Skeleton({match}) {
+
   return (
     <div className="Skeleton" >
     <Nav className="Links"/>
@@ -16,6 +17,7 @@ function Skeleton({match}) {
     <Route path={match.path + "/chat"} component={Chat}/>
     <Route path={match.path + "/wiki"} component={Wiki}/>
     </Switch>
+
     </div>
   );
 }

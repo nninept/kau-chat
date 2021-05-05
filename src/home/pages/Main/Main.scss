@@ -23,18 +23,20 @@
     border-radius: 12px;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
   }
-  .Main__weather {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 240px;
-    height: 180px;
-    background-color: #40368a;
-    margin: 16px;
-    border-radius: 12px;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
-  }
+  
   animation: fadeIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 180px;
+  background-color: #40368a;
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 }
 
 .Main__container__lower {
