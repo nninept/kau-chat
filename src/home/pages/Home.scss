@@ -1,10 +1,13 @@
-.Main {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+.home {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+  }
 
-.Main__container {
+  
+.main {
+  margin : auto;
   display: flex;
   flex-direction: column;
 }
@@ -65,46 +68,6 @@
   float: right;
 }
 
-.Main__slogan {
-  position: relative;
-  z-index: 1;
-  padding: 40px;
-  border-radius: 12px;
-  line-height: 3.7rem;
-}
-
-.Main__slogan::after {
-  content: "";
-  position: absolute;
-  border-radius: 12px;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #efefef;
-  opacity: 0.92;
-}
-
-.Main__slogan__1 {
-  font-size: 2.8rem;
-  animation: 1.5s fadeIn ease-in;
-}
-
-.Slogan__borderLine {
-  position: relative;
-  margin: 10px 0;
-  border-bottom: 5px solid #40368a;
-  animation: grow 2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-
-.Main__slogan__2 {
-  opacity: 0;
-  font-size: 1.4rem;
-  text-align: right;
-  animation: 2s fadeIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-}
-
 @keyframes grow {
   0% {
     width: 0px;
@@ -124,3 +87,4 @@
     opacity: 0.9;
   }
 }
+  

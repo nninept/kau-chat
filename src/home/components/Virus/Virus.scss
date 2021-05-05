@@ -11,7 +11,7 @@
   height: 85%;
   border-radius: 8px;
   line-height: 1.5rem;
-  animation: QuotesFadeIn 1s 0.7s forwards;
+  animation: VirusFadeIn 1s 0.7s forwards;
 }
 .Virus__borderLine {
   width: 80%;
@@ -30,4 +30,13 @@
 .Virus__diff {
   font-size: 0.88rem;
   margin-left: 0.5rem;
+}
+
+@keyframes VirusFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import "./Virus.scss";
 import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
