@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import "./Virus.scss";
 import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
@@ -24,7 +24,8 @@ const Virus = () => {
     window.open('http://ncov.mohw.go.kr/')
   }
   return (
-    <div className="Virus" onClick={openVirusInfo}>
+    <div className="virus-background" >
+    <div className="virus" onClick={openVirusInfo}>
       <h3>{today} 신규 확진자</h3>
       <div className="Virus__borderLine"></div>
       <div className="Virus__victims">
@@ -57,6 +58,7 @@ const Virus = () => {
             12명)
           </span>
         </div>
+      </div>
       </div>
     </div>
   );

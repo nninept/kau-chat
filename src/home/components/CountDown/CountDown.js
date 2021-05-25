@@ -11,14 +11,18 @@ function CountDown() {
     sec: 0,
   });
   const [targetDate, setTargetDate] = useState(null);
-  const [targetType, setTargetType] = useState(null);
+  const [targetName, setTargetName] = useState(null);
+  const [targetChange, setTargetChange] = useState(null);
+  const [refresh, setRefresh] = useState(null);
   const [isSetterVisible, setIsSetterVisible] = useState(false);
 
   useEffect(() => {
-    chrome.storage.sync.get(["targetDate", "targetType"], function (result) {
+    let result = JSON.parse(window.localStorage.getItem("d-day"))
+    console.log(result)
+    if (result){
       let storageDate = result.targetDate;
       setTargetDate(result.targetDate);
-      setTargetType(result.targetType);
+      setTargetName(result.targetName);
       interval = setInterval(() => {
         if (storageDate === undefined) {
           storageDate = null;
@@ -26,21 +30,23 @@ function CountDown() {
         const date = calculateCountdown(storageDate);
         date ? setstate(date) : stop();
       }, 1000);
-    });
     return () => {
       stop();
     };
-  }, []);
+  }
+  }, [refresh]);
 
   const onTargetDateChange = (e) => {
     setTargetDate(e.target.value);
   };
-  const onTargetTypeChange = (e) => {
-    setTargetType(e.target.value);
+  const onTargetNameChange = (e) => {
+    setTargetChange(e.target.value);
   };
   // 디데이 설정 버튼 누르면, 크롬 저장소에 저장하도록
   const onTargetDataSubmit = () => {
-    chrome.storage.sync.set({ targetDate: targetDate, targetType: targetType });
+    window.localStorage.setItem("d-day",JSON.stringify({ targetDate: targetDate, targetName: targetChange }));
+    setTargetChange(null)
+    setRefresh({})
     setIsSetterVisible(false);
   };
   const setSetterVisible = () => {
@@ -106,9 +112,9 @@ function CountDown() {
 
   return (
     <div className="Countdown">
-      {targetType ? (
+      {targetName ? (
         <div className="Countdown__title" onClick={setSetterVisible}>
-          {targetType}까지 남은 시간 ⏱
+          {targetName}까지 남은 시간 ⏱
         </div>
       ) : (
         <div className="Countdown__title" onClick={setSetterVisible}>
@@ -121,32 +127,11 @@ function CountDown() {
         style={{ visibility: isSetterVisible ? "visible" : "hidden" }}
       >
         <input type="date" onChange={onTargetDateChange}></input>
-        <div className="Countdown__setter__radio" onChange={onTargetTypeChange}>
+        <div className="Countdown__setter__radio" >
           <span>
             <input
-              type="radio"
-              id="opening"
-              name="event"
-              value="개강"
-              onChange={onTargetTypeChange}
-            ></input>
-            <label htmlFor="opening">개강</label>
+            type="text" placeholder="D-day Name" onChange={onTargetNameChange}></input>
           </span>
-          <span>
-            <input
-              type="radio"
-              id="ending"
-              name="event"
-              value="종강"
-              onChange={onTargetTypeChange}
-            ></input>
-            <label htmlFor="ending">종강</label>
-          </span>
-        </div>
-        <div
-          style={{ color: "#cf3d3d", fontSize: "0.6rem", margin: "0.5rem 0" }}
-        >
-          * 새로고침 후 변경 결과가 반영됩니다!
         </div>
         <div className="Countdown__setter__btn__container">
           <button
