@@ -1,6 +1,16 @@
-.Virus {
+.virus-background {
+  display: flex;
+  width: 240px;
+  height: 180px;
+  background-color: #40368a;
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+}
+
+.virus {
+  margin : auto;
   opacity: 0;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;

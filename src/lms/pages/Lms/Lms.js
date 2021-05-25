@@ -46,28 +46,6 @@ function Lms({match}) {
         })
         setUploadList(noticeTemp)
 
-        // new Promise( async(res, rej)=> {
-        //     let pageData = await ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/')
-        //     let noticeTemp = []
-        //     let $ = cheerio.load(pageData)
-        //     let lec = $('#region-main > div > div.progress_courses > div.course_lists > ul')
-        //     lec.find('a').each(async (index, elem)=>{
-        //         let jElem = $(elem)
-        //         let lecLink = jElem.attr('href')
-        //         new Promise(async (res, rej)=> {
-        //             let lecInfo = await ipcRenderer.invoke('get-lms', lecLink)
-        //             let $ = cheerio.load(lecInfo)
-        //             let lists = $('#coursemos-course-menu > ul > li:nth-child(2) > div > div.content')
-        //             let aList = lists.find("a")
-        //             let quiz;
-        //             aList.each((index, elem)=>{
-        //                 let text = $(elem).text()
-        //                 if(text == "퀴즈")
-        //                     console.log("there is!")
-        //             })
-        //         })
-        //     })
-        //     })
 
     },[])
 

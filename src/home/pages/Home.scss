@@ -1,13 +1,15 @@
 .home {
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100%;
-  }
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 
-  
 .main {
   margin : auto;
+
   display: flex;
   flex-direction: column;
 }
@@ -28,18 +30,6 @@
   }
   
   animation: fadeIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-}
-
-.weather {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 240px;
-  height: 180px;
-  background-color: #40368a;
-  margin: 16px;
-  border-radius: 12px;
-  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 }
 
 .Main__container__lower {
@@ -66,6 +56,11 @@
   }
   animation: fadeIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   float: right;
+}
+
+.second {
+  width: 792px;
+  height: 434px;
 }
 
 @keyframes grow {
