@@ -4,7 +4,7 @@ import "./DepartmentNotice.scss";
 
 function DepartmentNotice() {
   const DEPARTMENT_INFO = {
-    postLink : "/notice/web/bbs/bbsListApi.gen",
+    postLink : "http://52.79.130.113:3000/kaunotices/",
     125 : {
       department : "soft",
       siteFlag : "sw_www",
@@ -62,8 +62,8 @@ function DepartmentNotice() {
     const departmentNumber = JSON.parse(window.localStorage.getItem("loginInfo"))["id"].substr(4,3)
 
     axios.post(DEPARTMENT_INFO['postLink'], {"bbsAuth" : "30", "pageIndex" : 1, 
-            "siteFlag":DEPARTMENT_INFO[departmentNumber]["siteFlag"], "bbsId" : DEPARTMENT_INFO[departmentNumber]["bbsId"]})
-    .then(response => console.log(response))
+            "siteFlag":DEPARTMENT_INFO[departmentNumber]["siteFlag"], "bbsId" : DEPARTMENT_INFO[departmentNumber]["bbsId"]},{params : {category:"department"}})
+            .then(response => console.log(response))
   },[]);
 
   return (
