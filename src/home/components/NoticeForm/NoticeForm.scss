@@ -1,0 +1,46 @@
+.school-notice-form {
+  height: 100%;
+    overflow-y: scroll;
+  }
+  
+  .school-notice-form::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .school-notice-form::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius:10px;
+  }
+  
+  .school-notice-form::-webkit-scrollbar-track{
+    background-color: gray;
+    border-radius: 10px;
+  }
+  
+  .Notice__border {
+    width: 100%;
+    margin: 0.6rem 0;
+    border-bottom: 1px solid #cdcdcd;
+  }
+  
+  .school-notice-form .Notice__container {
+    margin: 8px 0;
+    article {
+      font-size: 0.9rem;
+      margin: 12px 0;
+      max-width: 25ch;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    article {
+      cursor: pointer;
+      > a:hover {
+        color: #40368a;
+      }
+    }
+    article:hover {
+      transition: 80ms ease-in;
+      font-weight: 800;
+    }
+  }
