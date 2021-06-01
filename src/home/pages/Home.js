@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./Home.scss"
-
 import React from "react";
 import Notice from "../components/Notice/Notice";
 import Virus from "../components/Virus/Virus";
@@ -10,7 +9,7 @@ import CountDown from "../components/CountDown/CountDown";
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@material-ui/core'
 function Home() {
-
+  
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   useEffect(() => {
     setBackgroundIndex(Math.floor((Math.random() * 100) % 16) + 1);
@@ -25,7 +24,7 @@ function Home() {
   return (
     <div className="home" style={styles.background}>
 
-    <Carousel>
+    <Carousel interval={15000} autoPlay={false}>
     {/* <Paper> */}
       <div className="main">
         <article className="Main__container__upper">

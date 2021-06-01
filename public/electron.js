@@ -27,6 +27,8 @@ function createWindow() {
     // fullscreen: true,
     width:800,
     height:600,
+    minWidth : 760,
+    minHeight : 450,
     resizable: true,
     frame:false,
     webPreferences: {
