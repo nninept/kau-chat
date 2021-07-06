@@ -99,6 +99,7 @@ function CountDown() {
 
   function stop() {
     clearInterval(interval);
+    window.localStorage.removeItem('d-day')
   }
 
   function addLeadingZeros(value) {

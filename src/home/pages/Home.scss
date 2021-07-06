@@ -56,9 +56,17 @@
 }
 
 .second {
-  width: 792px;
+  width: 864px;
   height: 434px;
+  display: flex;
+  justify-content: space-around;
 }
+
+.second .section{
+  background-color: white;
+  border-radius: 10px;
+}
+
 
 @keyframes grow {
   0% {

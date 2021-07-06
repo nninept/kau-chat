@@ -48,9 +48,9 @@ function Links(props) {
           link="/home"
         />
         <IconLink
-          title="중앙도서관"
-          src="./library.svg"
-          alt="중앙도서관"
+          title="환경설정"
+          src="./setting.png"
+          alt="환경설정"
           link="/home"
         />
         <Link className="logout" to={"/"} onClick={logoutHandler}>Logout</Link>
@@ -58,5 +58,4 @@ function Links(props) {
     </div>
   );
 }
-
 export default Links;
