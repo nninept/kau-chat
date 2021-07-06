@@ -2,6 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import "./Virus.scss";
 import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
+import axios from 'axios'
 
 const Virus = () => {
   const [seoul, setSeoul] = useState({});
@@ -12,12 +13,13 @@ const Virus = () => {
   const [today, setToday] = useState(new Date().toLocaleDateString());
 
   useLayoutEffect(() => {
-    fetch("https://calm-mesa-43659.herokuapp.com/virus")
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get('http://52.79.130.113:3000/virus')
+    .then(res =>
+      {
+        let data = res.data.result
         setSeoul(data.seoul);
         setGyeonggi(data.gyeonggi);
-      });
+      })
   }, []);
 
   const openVirusInfo = ()=>{
