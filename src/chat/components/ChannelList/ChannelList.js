@@ -60,14 +60,14 @@ function Chat() {
           <Room major={DEPARTMENT_INFO[departmentNumber].major} id="logistics" current={2}></Room>
         </section>
         <section className="Chat-half">
-          <Room
+          {/* <Room
             major="항공우주 및 기계공학부"
             id="mechanical"
             current={2}
           ></Room>
           <Room major="항공운항학과" id="flight" current={2}></Room>
           <Room major="항공전자정보공학부" id="electronic" current={2}></Room>
-          <Room major="항공재료공학과" id="material" current={2}></Room>
+          <Room major="항공재료공학과" id="material" current={2}></Room> */}
         </section>
       </div>
     </div>
