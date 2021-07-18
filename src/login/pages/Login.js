@@ -11,7 +11,10 @@ function isSessionOn(){
 function Login(props) {
   const history = props.history;
   const loginInfo = isSessionOn()
-  if(loginInfo) electron.ipcRenderer.invoke('login', loginInfo).then(res => history.push('/home'))
+  if(loginInfo) {
+    window.localStorage.setItem("department-number", JSON.parse(window.localStorage.getItem("loginInfo"))["id"].substr(4,3))
+    electron.ipcRenderer.invoke('login', loginInfo).then(res => history.push('/home'))
+  }
 
   const [enteredId, setEnteredId] = useState('')
   const [enteredPwd, setEnteredPwd] = useState('')
@@ -31,6 +34,7 @@ function Login(props) {
     
     let isLoginSuccess = await electron.ipcRenderer.invoke('login', {id:enteredId, pwd:enteredPwd})
     window.localStorage.setItem("loginInfo", JSON.stringify({id:enteredId, pwd:enteredPwd}))
+    window.localStorage.setItem("department-number", enteredId.substr(4,3))
     if(isLoginSuccess) history.push('/home')
     else setErrorState(!isLoginSuccess)
   }

@@ -33,9 +33,8 @@ function Channel() {
   const [msg, setMsg] = useState("");
   const [msgList, setMsgList] = useState([]);
   const [currentSocket, setCurrentSocket] = useState(null);
-
   useEffect(() => {
-    const socket = io('https://kau-project.herokuapp.com/',{ reconnection: false });
+    const socket = io('http://52.79.130.113:3000',{ reconnection: false });
     setCurrentSocket(socket);
     socket.on("message", (message) => {
       setMsgList((msgList) => [...msgList,message]);

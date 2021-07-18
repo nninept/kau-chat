@@ -13,7 +13,7 @@ async function getCookieWithLogin(arg){
     await browser.cookie.forEach(async (elem, idx) => {
     await mainWindow.webContents.session.cookies.set(elem).catch(err => {
       console.log(err)
-    })    
+    }) 
   })
 }
 return isLoginSuccess
