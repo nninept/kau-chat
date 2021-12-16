@@ -1,3 +1,15 @@
+# Design  
+
+![home](https://user-images.githubusercontent.com/62806497/146363102-d5ad620b-9789-4552-a08e-08ed9dee687b.png)  
+
+![lms](https://user-images.githubusercontent.com/62806497/146363487-2ea0dd65-4d8c-495d-9c9f-4a9960044064.png)  
+
+![종정시](https://user-images.githubusercontent.com/62806497/146363543-612410d5-d6be-4805-a059-54ba97b94b64.png)  
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
