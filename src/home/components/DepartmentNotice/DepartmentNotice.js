@@ -5,7 +5,7 @@ import "./DepartmentNotice.scss";
 
 function DepartmentNotice() {
   const DEPARTMENT_INFO = {
-    postLink : "http://52.79.130.113:3000/kaunotices/",
+    postLink : "/api/kaunotices/",
     125 : {
       department : "soft",
       siteFlag : "sw_www",

@@ -13,7 +13,7 @@ const Virus = () => {
   const [today, setToday] = useState(new Date().toLocaleDateString());
 
   useLayoutEffect(() => {
-    axios.get('http://52.79.130.113:3000/virus')
+    axios.get('/api/external/virus')
     .then(res =>
       {
         let data = res.data.result
