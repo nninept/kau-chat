@@ -19,6 +19,7 @@ const Virus = () => {
         let data = res.data.result
         setSeoul(data.seoul);
         setGyeonggi(data.gyeonggi);
+        console.log(data)
       })
   }, []);
 
@@ -35,7 +36,7 @@ const Virus = () => {
           <span>서울 : </span>
           <CountUp
             start={0}
-            end={isNaN(Number(seoul?.newCase)) ? 0 : Number(seoul?.newCase)}
+            end={isNaN(Number(seoul?.newCase.replace(/,/g,""))) ? 0 : Number(seoul?.newCase.replace(/,/g,""))}
             suffix="명"
             duration={2.75}
           />
@@ -50,7 +51,7 @@ const Virus = () => {
           <CountUp
             start={0}
             end={
-              isNaN(Number(gyeonggi?.newCase)) ? 0 : Number(gyeonggi?.newCase)
+              isNaN(Number(gyeonggi?.newCase.replace(/,/g,""))) ? 0 : Number(gyeonggi?.newCase.replace(/,/g,""))
             }
             suffix="명"
             duration={2.75}
