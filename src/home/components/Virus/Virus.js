@@ -4,6 +4,7 @@ import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
 import axios from 'axios'
 
+const {shell} = window.require('electron')
 const Virus = () => {
   const [seoul, setSeoul] = useState({});
   const [gyeonggi, setGyeonggi] = useState({});
@@ -23,7 +24,7 @@ const Virus = () => {
   }, []);
 
   const openVirusInfo = ()=>{
-    window.open('http://ncov.mohw.go.kr/')
+    shell.openExternal('http://ncov.mohw.go.kr/')
   }
   return (
     <div className="virus-background" >
@@ -35,7 +36,7 @@ const Virus = () => {
           <span>서울 : </span>
           <CountUp
             start={0}
-            end={isNaN(Number(seoul?.newCase)) ? 0 : Number(seoul?.newCase)}
+            end={isNaN(Number(seoul?.newCase.replace(/,/g,""))) ? 0 : Number(seoul?.newCase.replace(/,/g,""))}
             suffix="명"
             duration={2.75}
           />
@@ -50,7 +51,7 @@ const Virus = () => {
           <CountUp
             start={0}
             end={
-              isNaN(Number(gyeonggi?.newCase)) ? 0 : Number(gyeonggi?.newCase)
+              isNaN(Number(gyeonggi?.newCase.replace(/,/g,""))) ? 0 : Number(gyeonggi?.newCase.replace(/,/g,""))
             }
             suffix="명"
             duration={2.75}
