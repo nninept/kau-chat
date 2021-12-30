@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Virus.scss";
 import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
@@ -13,13 +13,14 @@ const Virus = () => {
   );
   const [today, setToday] = useState(new Date().toLocaleDateString());
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     axios.get('/api/external/virus')
     .then(res =>
       {
         let data = res.data.result
         setSeoul(data.seoul);
         setGyeonggi(data.gyeonggi);
+        console.log(data)
       })
   }, []);
 
@@ -36,7 +37,7 @@ const Virus = () => {
           <span>서울 : </span>
           <CountUp
             start={0}
-            end={isNaN(Number(seoul?.newCase.replace(/,/g,""))) ? 0 : Number(seoul?.newCase.replace(/,/g,""))}
+            end={seoul?.newCase ? Number(seoul?.newCase.replace(/,/g,"")) : 0}
             suffix="명"
             duration={2.75}
           />
@@ -50,8 +51,7 @@ const Virus = () => {
           <span>경기 : </span>
           <CountUp
             start={0}
-            end={
-              isNaN(Number(gyeonggi?.newCase.replace(/,/g,""))) ? 0 : Number(gyeonggi?.newCase.replace(/,/g,""))
+            end={gyeonggi?.newCase ? Number(gyeonggi?.newCase.replace(/,/g,"")) : 0
             }
             suffix="명"
             duration={2.75}
