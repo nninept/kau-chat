@@ -9,14 +9,14 @@ function Notice() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     // 일반공지
-    axios.post("http://52.79.130.113:3000/kaunotices/",{bbsId : "0119", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
+    axios.post("/api/kaunotices/",{bbsId : "0119", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
       .then((res) => {
         setGeneralNotiList({list : res.data.result, gcId : "gc32172b.do"})
       });
   }, []);
   useEffect(() => {
     // 학사공지
-    axios.post("http://52.79.130.113:3000/kaunotices/",{bbsId : "0120", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
+    axios.post("/api/kaunotices/",{bbsId : "0120", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
       .then((res) => {
         setSchoolNotiList({list : res.data.result, gcId : "gc14561b.do"})
       });
