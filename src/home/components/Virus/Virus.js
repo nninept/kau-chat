@@ -4,6 +4,7 @@ import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
 import axios from 'axios'
 
+const {shell} = window.require('electron')
 const Virus = () => {
   const [seoul, setSeoul] = useState({});
   const [gyeonggi, setGyeonggi] = useState({});
@@ -19,12 +20,11 @@ const Virus = () => {
         let data = res.data.result
         setSeoul(data.seoul);
         setGyeonggi(data.gyeonggi);
-        console.log(data)
       })
   }, []);
 
   const openVirusInfo = ()=>{
-    window.open('http://ncov.mohw.go.kr/')
+    shell.openExternal('http://ncov.mohw.go.kr/')
   }
   return (
     <div className="virus-background" >
