@@ -20,7 +20,6 @@ const Virus = () => {
         let data = res.data.result
         setSeoul(data.seoul);
         setGyeonggi(data.gyeonggi);
-        console.log(data)
       })
   }, []);
 

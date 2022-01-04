@@ -1,6 +1,7 @@
 import "./WeekBlock.css"
 
 function WeekBlock({blockContents}) {
+  console.log(blockContents)
   return (
       <div className="week-block" >
           <h4>{blockContents.title}</h4>
