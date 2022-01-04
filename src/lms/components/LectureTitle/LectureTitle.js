@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 import "./LectureTitle.css"
 
-function LectureTitle({link, title, prof}) {
+function LectureTitle({lecLink, title, prof}) {
   let newSpan = ""
   if (title.endsWith("NEW")){
     newSpan = "NEW"
@@ -13,7 +13,7 @@ function LectureTitle({link, title, prof}) {
         <Link to={{
           pathname : "/home/lms/detail",
           state: {
-            link
+            lecLink
           }
         }}>
           <div className="course">

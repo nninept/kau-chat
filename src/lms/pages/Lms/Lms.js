@@ -12,11 +12,11 @@ function Lms({match}) {
     const [lecList, setLecList] = useState([])
     const [uploadList, setUploadList] = useState([])
 
-    useEffect(async ()=>{
-        let pageData = await ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/')
-        console.log("title promise")
+    useEffect(()=>{
+        ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/')
+        .then(res=>{
         let lecTemp = []
-        let $ = cheerio.load(pageData)
+        let $ = cheerio.load(res)
         let lec = $('#region-main > div > div.progress_courses > div.course_lists > ul ')
         lec.find('a').each((index, elem)=>{
             let jElem = $(elem)
@@ -26,13 +26,14 @@ function Lms({match}) {
             lecTemp.push({title, link, prof})
         })
         setLecList(lecTemp)
+    })
     },[])
 
-    useEffect(async ()=>{
-        let pageData = await ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/local/ubnotification/index.php')
-        console.log("upload Props")
+    useEffect(()=>{
+        ipcRenderer.invoke('get-lms', 'http://lms.kau.ac.kr/local/ubnotification/index.php')
+        .then(res=>{
         let noticeTemp = []
-        let $ = cheerio.load(pageData)
+        let $ = cheerio.load(res)
         let lec = $('#region-main > div > div > div.well.wellnopadding')
         lec.find('a').each((index, elem)=>{
             let jElem = $(elem)
@@ -46,7 +47,7 @@ function Lms({match}) {
         })
         setUploadList(noticeTemp)
 
-
+    })
     },[])
 
     return (

@@ -10,8 +10,9 @@ const {ipcRenderer} = window.require('electron')
 function LectureInfo({location}) {
     const [weekContents, setWeekContents] = useState(null)
     const [lecNotice, setLecNotice] = useState(null)
+    console.log(location.state)
     useEffect(()=>{
-      ipcRenderer.invoke('get-lms', location.state.link)
+      ipcRenderer.invoke('get-lms', location.state.lecLink)
       .then(pageData=>{
           let $ = cheerio.load(pageData)
           let notice = $('#page-container > div.course-header > div > div > div > div.col-sm-4.upcommings.hidden-xs a')
@@ -27,7 +28,7 @@ function LectureInfo({location}) {
       })
     },[])
     useEffect(()=>{
-      ipcRenderer.invoke('get-lms', location.state.link)
+      ipcRenderer.invoke('get-lms', location.state.lecLink)
       .then(pageData=>{
         let $ = cheerio.load(pageData)
         let section = $(".section.main.clearfix")
@@ -44,8 +45,11 @@ function LectureInfo({location}) {
             let text = elem.find(".instancename").text()
             weekBlockContents.push( {contentLink, imgSrc, text} )
           })
+          console.log(title)
           return {title, weekBlockContents}
         })
+        weeksInfo = weeksInfo.length === 0 ? null : weeksInfo
+        console.log(weeksInfo)
         setWeekContents(weeksInfo)
       })
     },[])
@@ -56,7 +60,7 @@ function LectureInfo({location}) {
         <LectureNotice noticeInfo={lecNotice}/>
         </div>
         <div className="contents">
-        <LectureContents weekContents={weekContents}/>
+        {weekContents? <LectureContents weekContents={weekContents}/> : <h1>NO!!!!</h1>}
         </div>
     </div>
   );
