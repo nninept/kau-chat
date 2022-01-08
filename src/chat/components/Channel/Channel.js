@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Channel() {
+const Channel = () => {
   let onTextChange;
   let onMessageSubmit;
   const location = useLocation();
@@ -34,10 +34,10 @@ function Channel() {
   const [msgList, setMsgList] = useState([]);
   const [currentSocket, setCurrentSocket] = useState(null);
   useEffect(() => {
-    const socket = io('http://52.79.130.113:3000',{ reconnection: false });
+    const socket = io("http://52.79.130.113:3000", { reconnection: false });
     setCurrentSocket(socket);
     socket.on("message", (message) => {
-      setMsgList((msgList) => [...msgList,message]);
+      setMsgList((msgList) => [...msgList, message]);
     });
 
     return () => {
@@ -52,7 +52,7 @@ function Channel() {
 
   onMessageSubmit = (e) => {
     e.preventDefault();
-    currentSocket.emit("sendMessage", {msg, name:"unknown"});
+    currentSocket.emit("sendMessage", { msg, name: "unknown" });
     setMsg("");
   };
 
@@ -81,6 +81,6 @@ function Channel() {
       </form>
     </div>
   );
-}
+};
 
 export default Channel;

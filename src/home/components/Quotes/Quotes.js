@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Quotes.scss";
 
-function Quotes() {
+const Quotes = () => {
   useEffect(() => {
     fetch("https://calm-mesa-43659.herokuapp.com/quotes")
       .then((res) => res.json())
@@ -34,6 +34,6 @@ function Quotes() {
       )}
     </div>
   );
-}
+};
 
 export default Quotes;

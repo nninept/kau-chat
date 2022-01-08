@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Room.scss";
 
-function Room({ major, id, current }) {
+const Room = ({ major, id, current }) => {
   return (
     <div className="Room">
       <Link to={`/home/chat/${id}`}>
@@ -13,6 +13,6 @@ function Room({ major, id, current }) {
       </Link>
     </div>
   );
-}
+};
 
 export default Room;
