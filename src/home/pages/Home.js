@@ -15,7 +15,7 @@ function Home() {
     setBackgroundIndex(Math.floor((Math.random() * 100) % 16) + 1);
   }, []);
   useEffect(()=>{
-    axios.get('http://52.79.130.113:3000/notices')
+    axios.get('/api/kauboard/notices')
     .then(res => setContents(res.data.result))
 },[])
   const styles = {
