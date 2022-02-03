@@ -5,9 +5,7 @@ function SecondPage(){
   const [newsContent, setNewsContent] = useState([])
 
   useEffect(() => {
-  axios.post('http://221.140.17.128:3000/test',{
-     url : "http://www.hangkong.ac.kr/proxyUrlConnector.jsp?targetUrl=http://old.kau.ac.kr/page/kauspace/kaunews_list_pick.jsp?noticeYN=Y"
-  })
+  axios.get('http://221.140.17.128:3000/api/kaunews')
   .then(response=> {
     let div = document.createElement('div')
     div.innerHTML = response.data.result
