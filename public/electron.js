@@ -3,21 +3,12 @@ const { app, BrowserWindow, ipcMain} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
 const axios = require('axios')
+const cheerio = require('cheerio');
+const http = require("http")
+const https = require("https")
+const qs = require('qs')
 // 1. Gabage Collection이 일어나지 않도록 함수 밖에 선언함.
 let mainWindow, subWindow, browser;
-
-async function getCookieWithLogin(arg){
-  await browser.initBrowser()
-  let isLoginSuccess = await browser.loginLmsPage(arg['id'], arg['pwd']);
-  if (isLoginSuccess) {
-    await browser.cookie.forEach(async (elem, idx) => {
-    await mainWindow.webContents.session.cookies.set(elem).catch(err => {
-      console.log(err)
-    }) 
-  })
-}
-return isLoginSuccess
-}
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -85,12 +76,53 @@ ipcMain.handle("trays",(event,arg)=>{
   else if(arg==="minimize") mainWindow.minimize();
 })
 
-ipcMain.handle('login', async (event, arg) => {
-  const Browser = require('./browser')
-  browser = new Browser()
-  let isLoginSuccess = getCookieWithLogin(arg)
-return isLoginSuccess
+ipcMain.handle('login-post', async (event, arg) => {
+  const httpAgent = new http.Agent({ keepAlive: true});
+  const httpsAgent = new https.Agent({ keepAlive: true });
+  const instance = axios.create({
+    baseURL: 'https://lms.kau.ac.kr/',
+    withCredentials: true,
+    httpAgent,
+    httpsAgent,
+    timeout: 5000
+  })
+  const data = {"username":arg["id"],"password":arg["pwd"]}
+  const response = await instance({
+    method: 'POST',
+    data: qs.stringify(data),
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    maxRedirects:0,
+    url:"/login/index.php",
+    withCredentials:true,
+    validateStatus: function (status) {
+      return status >= 200 && status <= 303
+    }
+  })
+
+  const $ = cheerio.load(response.data);
+  const redirect = $('a')[0].attribs.href
+  const isLoginSuccess = (new URL(redirect)).searchParams.get('testsession')
+  if(!isLoginSuccess)
+    return false
+
+
+  const cookie = response.headers['set-cookie'][1].split(";")[0].split('=')[1]
+
+  mainWindow.webContents.session.cookies.set({
+    name : 'MoodleSession',
+    value : cookie,
+    domain : 'lms.kau.ac.kr',
+    path : '/',
+    httpOnly : true,
+    secure : false,
+    url : 'http://lms.kau.ac.kr'
+  })
+  axios.get(redirect, {headers: {
+    Cookie : `MoodleSession=${cookie}`
+  }})
+  return true
 })
+
 
 ipcMain.handle('get-lms', async (event, arg) => {
   let lmsCookie = browser.cookie.find((elem, idx, arr) => elem.name=='MoodleSession')
@@ -108,21 +140,6 @@ ipcMain.handle('open-npotal', async (e, arg) => {
     subWindow.on('closed', () => {
       subWindow = undefined;
     });//#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input
-
-      subWindow.webContents.executeJavaScript(`
-      (async () => { 
-        console.log("start")
-        let id = await document.querySelector("#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input")
-        console.log(id)
-        id.value = "2019125061"
-        console.log(id)
-        console.log(id.value)
-        let pwd = await document.querySelector("#mainForm3 tbody tr:nth-child(3) input")
-        pwd.value = "david990601*"
-        let btn = document.querySelector('#mainForm3 tbody tr:nth-child(1) td:nth-child(3) input')
-        btn.click()
-      })() 
-      `)
   } else {
     subWindow.focus()
   }
