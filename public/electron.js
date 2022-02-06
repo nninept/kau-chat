@@ -145,3 +145,20 @@ ipcMain.handle('open-npotal', async (e, arg) => {
     subWindow.focus()
   }
 })
+
+ipcMain.handle('open-lms', async (e, arg) => {
+  if(!subWindow){
+    subWindow = new BrowserWindow({
+      webPreferences: {
+        nodeIntegration: true,
+        partition:"persist:sessInfo"
+      }
+    })
+    await subWindow.loadURL('http://lms.kau.ac.kr')
+    subWindow.on('closed', () => {
+      subWindow = undefined;
+    });//#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input
+  } else {
+    subWindow.focus()
+  }
+})
