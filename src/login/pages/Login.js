@@ -14,10 +14,8 @@ function Login(props) {
   const history = props.history;
   useEffect(()=>{
     const loginInfo = isSessionOn()
-    if(loginInfo) {
-      // window.localStorage.setItem("department-number", JSON.parse(window.localStorage.getItem("loginInfo"))["id"].substr(4,3))
+    if(loginInfo) 
       electron.ipcRenderer.invoke('login-post', loginInfo).then(res => history.push('/home'))
-    }
   },[])
 
   const [enteredId, setEnteredId] = useState('')
