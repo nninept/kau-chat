@@ -5,6 +5,7 @@ import PopUp from '../components/PopUp/PopUp'
 import Carousel from 'react-material-ui-carousel'
 import FirstPage from "./SlidePages/FirstPage"
 import SecondPage from "./SlidePages/SecondPage"
+import address from "../../address-info"
 
 import axios from 'axios';
 function Home() {
@@ -15,7 +16,7 @@ function Home() {
     setBackgroundIndex(Math.floor((Math.random() * 100) % 16) + 1);
   }, []);
   useEffect(()=>{
-    axios.get('/api/kauboard/notices')
+    axios.get(address.url + '/api/kauboard/notices')
     .then(res => setContents(res.data.result))
 },[])
   const styles = {
