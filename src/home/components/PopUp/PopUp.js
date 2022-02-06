@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import "./PopUp.css"
+
 function PopUp({content,idx}){
     const [isModalOpen, setIsModalOpen] = useState(true)
     const onClick=(e)=>{

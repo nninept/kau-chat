@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"
 import NoticeForm from "../NoticeForm/NoticForm"
 import "./Notice.scss";
+import address from "../../../address-info"
 
 function Notice() {
   const [generalNotiList, setGeneralNotiList] = useState(null);
@@ -9,14 +10,14 @@ function Notice() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     // 일반공지
-    axios.post("/api/kaunotices/",{bbsId : "0119", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
+    axios.post(address.url + "/api/kaunotices/",{bbsId : "0119", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
       .then((res) => {
         setGeneralNotiList({list : res.data.result, gcId : "gc32172b.do"})
       });
   }, []);
   useEffect(() => {
     // 학사공지
-    axios.post("/api/kaunotices/",{bbsId : "0120", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
+    axios.post(address.url + "/api/kaunotices/",{bbsId : "0120", bbsAuth : "30", pageIndex:1, siteFlag:"www"}, {params : {category : "general"}})
       .then((res) => {
         setSchoolNotiList({list : res.data.result, gcId : "gc14561b.do"})
       });

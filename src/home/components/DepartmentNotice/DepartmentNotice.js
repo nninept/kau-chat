@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"
 import NoticeForm from "../NoticeForm/NoticForm"
 import "./DepartmentNotice.scss";
+import address from "../../../address-info"
 
 function DepartmentNotice() {
   const DEPARTMENT_INFO = {
-    postLink : "/api/kaunotices/",
+    postLink : address.url + "/api/kaunotices/",
     125 : {
       department : "soft",
       siteFlag : "sw_www",
@@ -70,7 +71,6 @@ function DepartmentNotice() {
 
   const [departmentNoticeList, setDepartmentNotice] = useState(null)
   useEffect(() => {
-    // const departmentNumber = JSON.parse(window.localStorage.getItem("loginInfo"))["id"].substr(4,3)
     const departmentNumber = window.localStorage.getItem("department-number")
     axios.post(DEPARTMENT_INFO['postLink'], {"bbsAuth" : "30", "pageIndex" : 1, 
             "siteFlag":DEPARTMENT_INFO[departmentNumber]["siteFlag"], "bbsId" : DEPARTMENT_INFO[departmentNumber]["bbsId"]},{params : {category:"department"}})
