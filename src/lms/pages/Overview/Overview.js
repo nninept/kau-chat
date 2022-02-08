@@ -14,7 +14,7 @@ function Overview({lecList, uploadList}) {
         <div> <LectureList lectureTitle={lecList} /> </div> 
         <CurrentUpload uploadList={uploadList}/>
     </div>
-    );
-}
+  );
+};
 
-export default Overview
+export default Overview;

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Channel() {
+const Channel = () => {
   let onTextChange;
   let onMessageSubmit;
   const location = useLocation();
@@ -38,7 +38,7 @@ function Channel() {
     const socket = io(address.url,{ reconnection: false });
     setCurrentSocket(socket);
     socket.on("message", (message) => {
-      setMsgList((msgList) => [...msgList,message]);
+      setMsgList((msgList) => [...msgList, message]);
     });
 
     return () => {
@@ -53,7 +53,7 @@ function Channel() {
 
   onMessageSubmit = (e) => {
     e.preventDefault();
-    currentSocket.emit("sendMessage", {msg, name:"unknown"});
+    currentSocket.emit("sendMessage", { msg, name: "unknown" });
     setMsg("");
   };
 
@@ -82,6 +82,6 @@ function Channel() {
       </form>
     </div>
   );
-}
+};
 
 export default Channel;

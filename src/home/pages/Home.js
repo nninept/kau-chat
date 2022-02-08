@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import "./Home.scss"
+import "./Home.scss";
 import React from "react";
 import PopUp from '../components/PopUp/PopUp'
 import Carousel from 'react-material-ui-carousel'
 import FirstPage from "./SlidePages/FirstPage"
 import SecondPage from "./SlidePages/SecondPage"
 import address from "../../address-info"
-
-import axios from 'axios';
-function Home() {
-  
+import axios from "axios";
+const Home = () => {
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const [contents, setContents] = useState(null);
   useEffect(() => {
@@ -28,17 +26,19 @@ function Home() {
   };
   return (
     <div className="home" style={styles.background}>
-      {
-        contents ? contents.map((elem, idx)=>{
-          return <PopUp content={elem} idx={idx} key={idx}/>
-        }) : <></>
-      }
-    <Carousel interval={15000} autoPlay={false} >
-      <FirstPage/>
-      <SecondPage/>
-    </Carousel>
+      {contents ? (
+        contents.map((elem, idx) => {
+          return <PopUp content={elem} idx={idx} key={idx} />;
+        })
+      ) : (
+        <></>
+      )}
+      <Carousel interval={15000} autoPlay={false}>
+        <FirstPage />
+        <SecondPage />
+      </Carousel>
     </div>
   );
-}
+};
 
 export default Home;
