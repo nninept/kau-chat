@@ -3,6 +3,7 @@ import "./Virus.scss";
 import CountUp from "react-countup";
 import Arrow from "../Arrow/Arrow";
 import axios from 'axios'
+import address from "../../../address-info"
 
 const {shell} = window.require('electron')
 const Virus = () => {
@@ -14,7 +15,7 @@ const Virus = () => {
   const [today, setToday] = useState(new Date().toLocaleDateString());
 
   useEffect(() => {
-    axios.get('/api/external/virus')
+    axios.get(address.url + '/api/external/virus')
     .then(res =>
       {
         let data = res.data.result

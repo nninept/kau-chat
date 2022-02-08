@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NoticeForm from "../NoticeForm/NoticForm";
 import "./DepartmentNotice.scss";
+import address from "../../../address-info"
 
 const DepartmentNotice = () => {
   const DEPARTMENT_INFO = {
-    postLink: "/api/kaunotices/",
-    125: {
-      department: "soft",
-      siteFlag: "sw_www",
+    postLink : address.url + "/api/kaunotices/",
+    125 : {
+      department : "soft",
+      siteFlag : "sw_www",
       bbsId: "0032",
       gcId: "gc911b.do",
     },
@@ -70,26 +71,12 @@ const DepartmentNotice = () => {
 
   const [departmentNoticeList, setDepartmentNotice] = useState(null);
   useEffect(() => {
-    // const departmentNumber = JSON.parse(window.localStorage.getItem("loginInfo"))["id"].substr(4,3)
-    const departmentNumber = window.localStorage.getItem("department-number");
-    axios
-      .post(
-        DEPARTMENT_INFO["postLink"],
-        {
-          bbsAuth: "30",
-          pageIndex: 1,
-          siteFlag: DEPARTMENT_INFO[departmentNumber]["siteFlag"],
-          bbsId: DEPARTMENT_INFO[departmentNumber]["bbsId"],
-        },
-        { params: { category: "department" } }
-      )
-      .then((response) => {
-        setDepartmentNotice({
-          list: response.data.result,
-          gcId: DEPARTMENT_INFO[departmentNumber]["gcId"],
-        });
-      });
-  }, []);
+    const departmentNumber = window.localStorage.getItem("department-number")
+    axios.post(DEPARTMENT_INFO['postLink'], {"bbsAuth" : "30", "pageIndex" : 1, 
+            "siteFlag":DEPARTMENT_INFO[departmentNumber]["siteFlag"], "bbsId" : DEPARTMENT_INFO[departmentNumber]["bbsId"]},{params : {category:"department"}})
+            .then(response => {
+              setDepartmentNotice({list : response.data.result, gcId :DEPARTMENT_INFO[departmentNumber]["gcId"]})})
+  },[]);
 
   return (
     <div className="department-notice">
