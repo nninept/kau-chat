@@ -1,27 +1,22 @@
 import React from "react";
 import "./Nav.scss";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import IconLink from "../IconLink/IconLink";
 
 function Links(props) {
-  const logoutHandler = ()=>{
-    console.log(window.localStorage.clear())
-  }
+  const logoutHandler = () => {
+    console.log(window.localStorage.clear());
+  };
   return (
     <div className="links">
-      <ul >
-      <IconLink
+      <ul>
+        <IconLink
           title="학교 홈페이지"
           src="./university.svg"
           alt="학교 메인"
           link="/home"
         />
-        <IconLink
-          title="LMS"
-          src="./lms.svg"
-          alt="LMS"
-          link="/home/lms"
-        />
+        <IconLink title="LMS" src="./lms.svg" alt="LMS" link="/home/lms" />
         <IconLink
           title="종합정보시스템"
           src="./system.svg"
@@ -34,7 +29,6 @@ function Links(props) {
           alt="채팅방"
           link="/home/chat"
         />
-
         <IconLink
           title="KAU 위키"
           src="./pick.svg"
@@ -53,7 +47,9 @@ function Links(props) {
           alt="환경설정"
           link="/home"
         />
-        <Link className="logout" to={"/"} onClick={logoutHandler}>Logout</Link>
+        <Link className="logout" to={"/"} onClick={logoutHandler}>
+          Logout
+        </Link>
       </ul>
     </div>
   );

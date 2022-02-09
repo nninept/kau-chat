@@ -2,10 +2,7 @@
   box-sizing: border-box;
   color: #ededed;
   display: grid;
-  grid-template-areas:
-    "header header header"
-    "line line line"
-    "icon temp perception";
+  grid-template-areas: "header header header" "line line line" "icon temp perception";
   grid-gap: 10px;
   margin: 10px;
   padding: 10px 10px;
@@ -37,16 +34,16 @@
   grid-area: icon;
   box-shadow: 0 4px #666;
   cursor: pointer;
-}
 
-.Weather__icon:hover {
-  transition: 100ms ease-in;
-  background-color: #a4c0dd;
-}
+  &:hover {
+    transition: 100ms ease-in;
+    background-color: #a4c0dd;
+  }
 
-.Weather__icon:active {
-  box-shadow: 0 2px #666;
-  transform: translateY(3px);
+  &:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(3px);
+  }
 }
 
 .Weather__styleLine {
@@ -112,6 +109,7 @@
   from {
     transform: scale(0);
   }
+
   to {
     transform: scale(1);
   }

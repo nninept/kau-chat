@@ -1,14 +1,24 @@
-import LectureList from '../../components/LectureList/LectureList';
-import CurrentUpload from '../../components/CurrentUpload/CurrentUpload'
-import "./Overview.css"
+import LectureList from "../../components/LectureList/LectureList";
+import CurrentUpload from "../../components/CurrentUpload/CurrentUpload";
+import "./Overview.scss";
+const electron = window.require("electron");
 
-function Overview({lecList, uploadList}) {
-    return (
-        <div className="overview">
-        <div> <LectureList lectureTitle={lecList} /> </div> 
-        <CurrentUpload uploadList={uploadList}/>
+function Overview({ lecList, uploadList }) {
+  const onClick = () => {
+    electron.ipcRenderer.invoke("open-lms");
+  };
+  return (
+    <div className="overview">
+      <div>
+        <button onClick={onClick}>go to lms</button>
+      </div>
+      <div>
+        {" "}
+        <LectureList lectureTitle={lecList} />{" "}
+      </div>
+      <CurrentUpload uploadList={uploadList} />
     </div>
-    );
+  );
 }
 
-export default Overview
+export default Overview;

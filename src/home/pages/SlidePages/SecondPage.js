@@ -1,13 +1,12 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
+import address from "../../../address-info"
 
 function SecondPage(){
   const [newsContent, setNewsContent] = useState([])
 
   useEffect(() => {
-  axios.post('http://52.79.130.113:3000/test',{
-     url : "http://www.hangkong.ac.kr/proxyUrlConnector.jsp?targetUrl=http://old.kau.ac.kr/page/kauspace/kaunews_list_pick.jsp?noticeYN=Y"
-  })
+  axios.get(address.url + '/api/kaunews')
   .then(response=> {
     let div = document.createElement('div')
     div.innerHTML = response.data.result

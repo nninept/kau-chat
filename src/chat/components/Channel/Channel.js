@@ -6,6 +6,7 @@ import io from "socket.io-client";
 import "./Channel.scss";
 import { useLocation } from "react-router-dom";
 import Message from "../Message/Message";
+import address from "../../../address-info";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,10 +35,10 @@ function Channel() {
   const [msgList, setMsgList] = useState([]);
   const [currentSocket, setCurrentSocket] = useState(null);
   useEffect(() => {
-    const socket = io('http://52.79.130.113:3000',{ reconnection: false });
+    const socket = io(address.url, { reconnection: false });
     setCurrentSocket(socket);
     socket.on("message", (message) => {
-      setMsgList((msgList) => [...msgList,message]);
+      setMsgList((msgList) => [...msgList, message]);
     });
 
     return () => {
@@ -52,7 +53,7 @@ function Channel() {
 
   onMessageSubmit = (e) => {
     e.preventDefault();
-    currentSocket.emit("sendMessage", {msg, name:"unknown"});
+    currentSocket.emit("sendMessage", { msg, name: "unknown" });
     setMsg("");
   };
 

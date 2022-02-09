@@ -2,26 +2,24 @@
   width: 60px;
   padding-bottom: 5px;
   text-align: center;
-}
+  .IconLink__content {
+    display: inline-block;
+    text-align: center;
 
-.IconLink__content {
-  display: inline-block;
-  text-align: center;
+    img {
+      width: 30px;
+    }
 
-}
+    div {
+      color: #cdcdcd;
+      margin: 7px;
+      font-size: 10px;
+    }
 
-.IconLink__content img {
-  width:30px;
-}
-
-.IconLink__content div {
-  color: #cdcdcd;
-  margin: 7px;
-  font-size: 10px;
-}
-
-.IconLink__content:hover {
-  cursor: pointer;
-  transition: 100ms ease-in;
-  transform: scale(1.1);
+    &:hover {
+      cursor: pointer;
+      transition: 100ms ease-in;
+      transform: scale(1.1);
+    }
+  }
 }
