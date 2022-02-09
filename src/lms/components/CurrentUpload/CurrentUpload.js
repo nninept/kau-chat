@@ -1,7 +1,7 @@
 import NoticeForm from "../UploadNoticeForm/UploadNoticeForm";
-import "./CurrentUpload.css";
+import "./CurrentUpload.scss";
 
-const CurrentUpload = ({ uploadList }) => {
+function CurrentUpload({ uploadList }) {
   return (
     <div className="current-upload">
       {uploadList ? (
@@ -20,6 +20,6 @@ const CurrentUpload = ({ uploadList }) => {
       )}
     </div>
   );
-};
+}
 
 export default CurrentUpload;

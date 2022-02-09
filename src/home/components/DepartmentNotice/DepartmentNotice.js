@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NoticeForm from "../NoticeForm/NoticForm";
 import "./DepartmentNotice.scss";
-import address from "../../../address-info"
+import address from "../../../address-info";
 
 const DepartmentNotice = () => {
   const DEPARTMENT_INFO = {
-    postLink : address.url + "/api/kaunotices/",
-    125 : {
-      department : "soft",
-      siteFlag : "sw_www",
+    postLink: address.url + "/api/kaunotices/",
+    125: {
+      department: "soft",
+      siteFlag: "sw_www",
       bbsId: "0032",
       gcId: "gc911b.do",
     },

@@ -1,6 +1,7 @@
-import "./WeekBlock.css";
 
-const WeekBlock = ({ blockContents }) => {
+import "./WeekBlock.scss";
+
+function WeekBlock({ blockContents }) {
   console.log(blockContents);
   return (
     <div className="week-block">

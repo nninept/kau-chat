@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./LectureTitle.css";
+import "./LectureTitle.scss";
 
-const LectureTitle = ({ lecLink, title, prof }) => {
+function LectureTitle({ lecLink, title, prof }) {
   let newSpan = "";
   if (title.endsWith("NEW")) {
     newSpan = "NEW";

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./NoticeForm.scss";
 
 const { shell } = window.require("electron");
-const NoticeForm = ({ noticeInfo, noticeList, category }) => {
+function NoticeForm({ noticeInfo, noticeList, category }) {
   const onClick = (e) => {
     const domain =
       category == "general"

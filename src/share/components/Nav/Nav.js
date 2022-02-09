@@ -3,7 +3,7 @@ import "./Nav.scss";
 import { Link } from "react-router-dom";
 import IconLink from "../IconLink/IconLink";
 
-const Links = (props) => {
+function Links(props) {
   const logoutHandler = () => {
     console.log(window.localStorage.clear());
   };
@@ -29,7 +29,6 @@ const Links = (props) => {
           alt="채팅방"
           link="/home/chat"
         />
-
         <IconLink
           title="KAU 위키"
           src="./pick.svg"
@@ -54,5 +53,5 @@ const Links = (props) => {
       </ul>
     </div>
   );
-};
+}
 export default Links;

@@ -6,7 +6,7 @@ import io from "socket.io-client";
 import "./Channel.scss";
 import { useLocation } from "react-router-dom";
 import Message from "../Message/Message";
-import address from "../../../address-info"
+import address from "../../../address-info";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +35,7 @@ const Channel = () => {
   const [msgList, setMsgList] = useState([]);
   const [currentSocket, setCurrentSocket] = useState(null);
   useEffect(() => {
-    const socket = io(address.url,{ reconnection: false });
+    const socket = io(address.url, { reconnection: false });
     setCurrentSocket(socket);
     socket.on("message", (message) => {
       setMsgList((msgList) => [...msgList, message]);

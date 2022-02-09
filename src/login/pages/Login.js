@@ -1,22 +1,25 @@
-import {useState, useEffect} from "react";
-import ErrorMessage from '../components/Error/ErrorMessage'
-import "./Login.css"
-import axios from "axios"
-import { ContactsOutlined } from "@material-ui/icons";
-const electron = window.require('electron')
 
-function isSessionOn(){
-  let sessStorage = localStorage.getItem("loginInfo")
-  let loginInfo = JSON.parse(sessStorage)
-  return loginInfo
+import { useState, useEffect } from "react";
+import ErrorMessage from "../components/Error/ErrorMessage";
+import "./Login.scss";
+import axios from "axios";
+import { ContactsOutlined } from "@material-ui/icons";
+const electron = window.require("electron");
+
+function isSessionOn() {
+  let sessStorage = localStorage.getItem("loginInfo");
+  let loginInfo = JSON.parse(sessStorage);
+  return loginInfo;
 }
 function Login(props) {
   const history = props.history;
-  useEffect(()=>{
-    const loginInfo = isSessionOn()
-    if(loginInfo) 
-      electron.ipcRenderer.invoke('login-post', loginInfo).then(res => history.push('/home'))
-  },[])
+  useEffect(() => {
+    const loginInfo = isSessionOn();
+    if (loginInfo)
+      electron.ipcRenderer
+        .invoke("login-post", loginInfo)
+        .then((res) => history.push("/home"));
+  }, []);
 
   const [enteredId, setEnteredId] = useState("");
   const [enteredPwd, setEnteredPwd] = useState("");
@@ -32,15 +35,23 @@ function Login(props) {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
-
-    const isLoginSuccess = await electron.ipcRenderer.invoke('login-post', {id:enteredId, pwd:enteredPwd})
-    console.log(isLoginSuccess)
-    if(isLoginSuccess){
-      await window.localStorage.setItem("loginInfo", JSON.stringify({id:enteredId, pwd:enteredPwd}))
-      await window.localStorage.setItem("department-number", enteredId.substr(4,3))
-      history.push('/home')}
-    else setErrorState(!isLoginSuccess)
-  }
+    const isLoginSuccess = await electron.ipcRenderer.invoke("login-post", {
+      id: enteredId,
+      pwd: enteredPwd,
+    });
+    console.log(isLoginSuccess);
+    if (isLoginSuccess) {
+      await window.localStorage.setItem(
+        "loginInfo",
+        JSON.stringify({ id: enteredId, pwd: enteredPwd })
+      );
+      await window.localStorage.setItem(
+        "department-number",
+        enteredId.substr(4, 3)
+      );
+      history.push("/home");
+    } else setErrorState(!isLoginSuccess);
+  };
 
   return (
     <div className="login-home">

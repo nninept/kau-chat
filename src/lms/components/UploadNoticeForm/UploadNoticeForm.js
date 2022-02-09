@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./UploadNoticeForm.css";
+import "./UploadNoticeForm.scss";
 
-const NoticeForm = ({ lecLink, imgSrc, lecTitle, timeago, info }) => {
+function NoticeForm({ lecLink, imgSrc, lecTitle, timeago, info }) {
   let title = lecTitle.split("-")[0];
   let week = lecTitle.split("-")[2]
     ? lecTitle.split("-")[1] + "-" + lecTitle.split("-")[2]
@@ -29,6 +29,6 @@ const NoticeForm = ({ lecLink, imgSrc, lecTitle, timeago, info }) => {
       </Link>
     </div>
   );
-};
+}
 
 export default NoticeForm;

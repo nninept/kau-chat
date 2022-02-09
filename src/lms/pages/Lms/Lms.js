@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import LectureInfo from "../LectureInfo/LectureInfo";
 import Overview from "../Overview/Overview";
-import "./Lms.css";
+import "./Lms.scss";
 const { ipcRenderer } = window.require("electron");
 
-const Lms = ({ match }) => {
+function Lms({ match }) {
   const [lecList, setLecList] = useState([]);
   const [uploadList, setUploadList] = useState([]);
 
@@ -59,6 +59,6 @@ const Lms = ({ match }) => {
       <Route path={match.path + "/detail"} component={LectureInfo} />
     </div>
   );
-};
+}
 
 export default Lms;

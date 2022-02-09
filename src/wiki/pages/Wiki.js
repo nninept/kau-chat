@@ -1,7 +1,7 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 // import Nav from '../../components/Nav/Nav'
 
-const Wiki = ({ match }) => {
+function Wiki({ match }) {
   return (
     <div className="Wiki">
       <h3>Wiki</h3>

@@ -1,7 +1,8 @@
-import "./LectureContents.css";
+
+import "./LectureContents.scss";
 import WeekBlock from "../WeekBlock/WeekBlock";
 
-const LectureContent = ({ weekContents }) => {
+function LectureContent({ weekContents }) {
   return (
     <div className="lecture-contents">
       <div className="this-week">

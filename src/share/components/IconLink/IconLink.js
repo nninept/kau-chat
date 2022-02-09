@@ -4,20 +4,17 @@ import "./IconLink.scss";
 
 const { ipcRenderer } = window.require("electron");
 /*
-Links 안에서 사용할 링크 ㅋ
+Links 안에서 사용할 링크
 */
 
-const IconLink = ({ link, src, alt, title }) => {
-  let npotal = false;
-  if (link === "npotal") npotal = true;
-
+function IconLink({ link, src, alt, title }) {
   const openPotal = () => {
     ipcRenderer.invoke("open-npotal");
   };
 
   return (
     <div className="IconLink">
-      {npotal ? (
+      {link === "npotal" ? (
         <a onClick={openPotal}>
           <li className="IconLink__content">
             <img src={src} alt={alt} />

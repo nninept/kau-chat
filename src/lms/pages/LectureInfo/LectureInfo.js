@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cheerio from "cheerio";
 
-import "./LectureInfo.css";
+import "./LectureInfo.scss";
 import LectureNotice from "../../components/LectureNotice/LectureNotice";
 import LectureContents from "../../components/LectureContents/LectureContents";
 const { ipcRenderer } = window.require("electron");
 
-const LectureInfo = ({ location }) => {
+function LectureInfo({ location }) {
   const [weekContents, setWeekContents] = useState(null);
   const [lecNotice, setLecNotice] = useState(null);
   console.log(location.state);

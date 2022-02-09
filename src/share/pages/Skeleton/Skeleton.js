@@ -4,9 +4,9 @@ import Home from "../../../home/pages/Home";
 import Lms from "../../../lms/pages/Lms/Lms";
 import Chat from "../../../chat/pages/Chat";
 import Wiki from "../../../wiki/pages/Wiki";
-import "./Skeleton.css";
+import "./Skeleton.scss";
 
-const Skeleton = ({ match }) => {
+function Skeleton({ match }) {
   return (
     <div className="Skeleton">
       <Nav className="Links" />

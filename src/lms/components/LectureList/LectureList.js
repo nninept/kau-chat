@@ -1,7 +1,7 @@
 import LectureTitle from "../LectureTitle/LectureTitle";
-import "./LectureList.css";
+import "./LectureList.scss";
 
-const LectureList = ({ lectureTitle }) => {
+function LectureList({ lectureTitle }) {
   return (
     <div className="lecture-titles">
       <ul>

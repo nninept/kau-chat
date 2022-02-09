@@ -3,9 +3,9 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Top from "../components/Top/Top";
 import ChannelList from "../components/ChannelList/ChannelList";
 import Channel from "../components/Channel/Channel";
-import "./Chat.css";
+import "./Chat.scss";
 
-const Chat = ({ match }) => {
+function Chat({ match }) {
   return (
     <Router>
       <div className="chat-page">
