@@ -22,6 +22,6 @@ function LectureList({ lectureTitle }) {
       </ul>
     </div>
   );
-}
+};
 
 export default LectureList;

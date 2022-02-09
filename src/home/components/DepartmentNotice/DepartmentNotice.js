@@ -4,7 +4,7 @@ import NoticeForm from "../NoticeForm/NoticForm";
 import "./DepartmentNotice.scss";
 import address from "../../../address-info";
 
-function DepartmentNotice() {
+const DepartmentNotice = () => {
   const DEPARTMENT_INFO = {
     postLink: address.url + "/api/kaunotices/",
     125: {
@@ -71,25 +71,12 @@ function DepartmentNotice() {
 
   const [departmentNoticeList, setDepartmentNotice] = useState(null);
   useEffect(() => {
-    const departmentNumber = window.localStorage.getItem("department-number");
-    axios
-      .post(
-        DEPARTMENT_INFO["postLink"],
-        {
-          bbsAuth: "30",
-          pageIndex: 1,
-          siteFlag: DEPARTMENT_INFO[departmentNumber]["siteFlag"],
-          bbsId: DEPARTMENT_INFO[departmentNumber]["bbsId"],
-        },
-        { params: { category: "department" } }
-      )
-      .then((response) => {
-        setDepartmentNotice({
-          list: response.data.result,
-          gcId: DEPARTMENT_INFO[departmentNumber]["gcId"],
-        });
-      });
-  }, []);
+    const departmentNumber = window.localStorage.getItem("department-number")
+    axios.post(DEPARTMENT_INFO['postLink'], {"bbsAuth" : "30", "pageIndex" : 1, 
+            "siteFlag":DEPARTMENT_INFO[departmentNumber]["siteFlag"], "bbsId" : DEPARTMENT_INFO[departmentNumber]["bbsId"]},{params : {category:"department"}})
+            .then(response => {
+              setDepartmentNotice({list : response.data.result, gcId :DEPARTMENT_INFO[departmentNumber]["gcId"]})})
+  },[]);
 
   return (
     <div className="department-notice">
@@ -100,6 +87,6 @@ function DepartmentNotice() {
       />
     </div>
   );
-}
+};
 
 export default DepartmentNotice;

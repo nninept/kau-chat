@@ -15,7 +15,6 @@ function Home() {
   useEffect(() => {
     setBackgroundIndex(Math.floor((Math.random() * 100) % 16) + 1);
   }, []);
-
   useEffect(() => {
     axios
       .get(address.url + "/api/kauboard/notices")
@@ -45,6 +44,6 @@ function Home() {
       </Carousel>
     </div>
   );
-}
+};
 
 export default Home;

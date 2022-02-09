@@ -28,6 +28,6 @@ function LectureTitle({ lecLink, title, prof }) {
       </Link>
     </div>
   );
-}
+};
 
 export default LectureTitle;

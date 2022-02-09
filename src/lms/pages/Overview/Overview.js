@@ -1,3 +1,4 @@
+
 import LectureList from "../../components/LectureList/LectureList";
 import CurrentUpload from "../../components/CurrentUpload/CurrentUpload";
 import "./Overview.scss";
@@ -20,5 +21,3 @@ function Overview({ lecList, uploadList }) {
     </div>
   );
 }
-
-export default Overview;

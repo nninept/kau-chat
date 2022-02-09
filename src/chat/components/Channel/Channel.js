@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Channel() {
+const Channel = () => {
   let onTextChange;
   let onMessageSubmit;
   const location = useLocation();
@@ -82,6 +82,6 @@ function Channel() {
       </form>
     </div>
   );
-}
+};
 
 export default Channel;

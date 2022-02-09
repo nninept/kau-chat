@@ -25,6 +25,6 @@ function Chat({ match }) {
       </div>
     </Router>
   );
-}
+};
 
 export default Chat;

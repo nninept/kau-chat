@@ -7,6 +7,6 @@ function Wiki({ match }) {
       <h3>Wiki</h3>
     </div>
   );
-}
+};
 
 export default Wiki;
