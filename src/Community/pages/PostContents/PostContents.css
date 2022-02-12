@@ -1,0 +1,30 @@
+.post-contents {
+  width: 100%;
+  display: flex;
+}
+
+.post-contents .prev-link {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-contents .prev-link img {
+  height: 100px;
+}
+
+.post-contents .article {
+  display: flex;
+  flex: 3;
+}
+
+.post-contents .article-container {
+  width: 500px;
+}
+
+.post-contents .article-container .article-post {
+  padding: 10px;
+  border: 1px gray solid;
+}
