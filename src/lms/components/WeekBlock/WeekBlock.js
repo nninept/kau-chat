@@ -1,4 +1,3 @@
-
 import "./WeekBlock.scss";
 
 function WeekBlock({ blockContents }) {
@@ -18,6 +17,6 @@ function WeekBlock({ blockContents }) {
       })}
     </div>
   );
-};
+}
 
 export default WeekBlock;

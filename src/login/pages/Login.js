@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import ErrorMessage from "../components/Error/ErrorMessage";
 import "./Login.scss";
@@ -80,6 +79,6 @@ function Login(props) {
       </form>
     </div>
   );
-};
+}
 
 export default Login;

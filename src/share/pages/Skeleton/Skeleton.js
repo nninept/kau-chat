@@ -18,6 +18,6 @@ function Skeleton({ match }) {
       </Switch>
     </div>
   );
-};
+}
 
 export default Skeleton;
