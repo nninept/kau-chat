@@ -8,6 +8,7 @@ Links 안에서 사용할 링크
 */
 
 function IconLink({ link, src, alt, title }) {
+  ///////////////////////////////////openPotal?
   const openPotal = () => {
     ipcRenderer.invoke("open-npotal");
   };
@@ -31,6 +32,6 @@ function IconLink({ link, src, alt, title }) {
       )}
     </div>
   );
-};
+}
 
 export default IconLink;

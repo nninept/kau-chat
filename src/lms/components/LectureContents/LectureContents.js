@@ -1,4 +1,3 @@
-
 import "./LectureContents.scss";
 import WeekBlock from "../WeekBlock/WeekBlock";
 
@@ -25,6 +24,6 @@ function LectureContent({ weekContents }) {
       </div>
     </div>
   );
-};
+}
 
 export default LectureContent;

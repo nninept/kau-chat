@@ -70,6 +70,6 @@ function LectureInfo({ location }) {
       </div>
     </div>
   );
-};
+}
 
 export default LectureInfo;
