@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./CountDown.scss";
 
 let interval = 0;
-const CountDown = () => {
+function CountDown() {
   const [state, setstate] = useState({
     days: 0,
     hours: 0,
@@ -17,9 +17,9 @@ const CountDown = () => {
   const [isSetterVisible, setIsSetterVisible] = useState(false);
 
   useEffect(() => {
-    let result = JSON.parse(window.localStorage.getItem("d-day"));
-    console.log(result);
-    if (result) {
+    let result = JSON.parse(window.localStorage.getItem("d-day"))
+    console.log(result)
+    if (result){
       let storageDate = result.targetDate;
       setTargetDate(result.targetDate);
       setTargetName(result.targetName);
@@ -30,10 +30,10 @@ const CountDown = () => {
         const date = calculateCountdown(storageDate);
         date ? setstate(date) : stop();
       }, 1000);
-      return () => {
-        stop();
-      };
-    }
+    return () => {
+      stop();
+    };
+  }
   }, [refresh]);
 
   const onTargetDateChange = (e) => {
@@ -44,12 +44,9 @@ const CountDown = () => {
   };
   // 디데이 설정 버튼 누르면, 크롬 저장소에 저장하도록
   const onTargetDataSubmit = () => {
-    window.localStorage.setItem(
-      "d-day",
-      JSON.stringify({ targetDate: targetDate, targetName: targetChange })
-    );
-    setTargetChange(null);
-    setRefresh({});
+    window.localStorage.setItem("d-day",JSON.stringify({ targetDate: targetDate, targetName: targetChange }));
+    setTargetChange(null)
+    setRefresh({})
     setIsSetterVisible(false);
   };
   const setSetterVisible = () => {
@@ -60,7 +57,7 @@ const CountDown = () => {
   };
 
   // 카운트다운 로직 시작
-  const calculateCountdown = (endDate) => {
+  function calculateCountdown(endDate) {
     let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
 
     // clear countdown when date is reached
@@ -98,20 +95,20 @@ const CountDown = () => {
     timeLeft.sec = diff;
 
     return timeLeft;
-  };
+  }
 
-  const stop = () => {
+  function stop() {
     clearInterval(interval);
-    window.localStorage.removeItem("d-day");
-  };
+    window.localStorage.removeItem('d-day')
+  }
 
-  const addLeadingZeros = (value) => {
+  function addLeadingZeros(value) {
     value = String(value);
     while (value.length < 2) {
       value = "0" + value;
     }
     return value;
-  };
+  }
   const countDown = state;
 
   return (
@@ -131,13 +128,10 @@ const CountDown = () => {
         style={{ visibility: isSetterVisible ? "visible" : "hidden" }}
       >
         <input type="date" onChange={onTargetDateChange}></input>
-        <div className="Countdown__setter__radio">
+        <div className="Countdown__setter__radio" >
           <span>
             <input
-              type="text"
-              placeholder="D-day Name"
-              onChange={onTargetNameChange}
-            ></input>
+            type="text" placeholder="D-day Name" onChange={onTargetNameChange}></input>
           </span>
         </div>
         <div className="Countdown__setter__btn__container">
@@ -190,6 +184,6 @@ const CountDown = () => {
       </div>
     </div>
   );
-};
+}
 
 export default CountDown;

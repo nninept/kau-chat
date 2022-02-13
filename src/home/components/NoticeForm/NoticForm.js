@@ -32,6 +32,6 @@ function NoticeForm({ noticeInfo, noticeList, category }) {
       </div>
     </div>
   );
-};
+}
 
 export default NoticeForm;

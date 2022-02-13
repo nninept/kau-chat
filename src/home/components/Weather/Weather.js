@@ -52,7 +52,7 @@ const weekData = [
   },
 ];
 
-const Weather = () => {
+function Weather() {
   const [currentIcon, setCurrentIcon] = useState("");
   const [currentTemp, setCurrentTemp] = useState("");
   const [perceptionTemp, setPerceptionTemp] = useState("");
@@ -139,6 +139,6 @@ const Weather = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Weather;

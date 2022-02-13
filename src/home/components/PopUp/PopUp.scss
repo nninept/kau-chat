@@ -44,7 +44,8 @@
   }
 
   .button {
-    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
 
     input {
       border: none;
