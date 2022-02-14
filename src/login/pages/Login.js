@@ -10,6 +10,7 @@ function isSessionOn() {
   let loginInfo = JSON.parse(sessStorage);
   return loginInfo;
 }
+
 function Login(props) {
   const history = props.history;
   useEffect(() => {
@@ -57,23 +58,28 @@ function Login(props) {
       <h1 className="login-title"> KAU </h1>
       {errorState && <ErrorMessage />}
       <form id="login-form" onSubmit={addSubmitHandler}>
-        <input
-          type="text"
-          placeholder="학번"
-          name="id"
-          id="id"
-          onChange={addIdHandler}
-          required
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="비밀번호"
-          name="pwd"
-          id="pwd"
-          onChange={addPwdHandler}
-          required
-        />
+        <div className="txt_field">
+          <input
+            type="text"
+            name="id"
+            id="id"
+            onChange={addIdHandler}
+            required
+          />
+          <span></span>
+          <label>studentID</label>
+        </div>
+        <div className="txt_field">
+          <input
+            type="password"
+            name="pwd"
+            id="pwd"
+            onChange={addPwdHandler}
+            required
+          />
+          <span></span>
+          <label>password</label>
+        </div>
         <br />
         <input type="submit" value="Login" id="submit" />
       </form>
