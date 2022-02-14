@@ -37,7 +37,6 @@ function PopUp({ content, idx }) {
     }
     localStorage.setItem("notShow24h", JSON.stringify(valid));
     setIdCheck(valid.map((item) => item.contentID));
-    localStorage.clear();
   }, []);
 
   return (
