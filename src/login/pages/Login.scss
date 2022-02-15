@@ -20,7 +20,7 @@ body {
   background: white;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
-  padding: 30px 0;
+  padding: 10px 20px 20px 20px;
   h1 {
     text-align: center;
     padding: 20px 0;
@@ -87,8 +87,22 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  margin-bottom: 10px;
   :hover {
     border-color: rgb(83, 88, 155);
     transition: 0.5s;
+  }
+}
+
+.pass {
+  font-size: 13px;
+  margin: 10px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+
+  &:hover {
+    text-decoration: underline;
   }
 }
