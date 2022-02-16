@@ -80,8 +80,13 @@ function Login(props) {
           <span></span>
           <label>password</label>
         </div>
-        <br />
         <input type="submit" value="Login" id="submit" />
+        <a
+          className="pass"
+          href="http://nportal.kau.ac.kr/webcrea/GB03/mdi/search_password.html"
+        >
+          Forgot Password?
+        </a>
       </form>
     </div>
   );

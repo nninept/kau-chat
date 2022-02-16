@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+::selection {
+  color: #fff;
+  background-color: rgb(83, 88, 155);
+}
+
+.card-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 20px;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #303336;
+
+  .card {
+    height: 470px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 40px 40px -20px black;
+    overflow: hidden;
+
+    .card-top {
+      height: 236px;
+      font-weight: 300;
+      font-style: normal;
+      font-size: 1em;
+      line-height: 1.5;
+      color: #303336;
+      background-color: #d1e8ee;
+      overflow: hidden;
+
+      a {
+        display: block;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: inherit;
+          object-fit: cover;
+          object-position: center;
+          transition: 300ms;
+          &:hover {
+            opacity: 0.75;
+          }
+        }
+      }
+    }
+
+    .card-content {
+      padding: 30px;
+
+      .tag {
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 1rem;
+        color: rgb(83, 88, 155);
+      }
+    }
+    p {
+      color: #7b8591;
+      margin-top: 20px;
+      font-size: 1em;
+    }
+    .title {
+      color: #303336;
+      font-weight: 700;
+      transition: 300ms;
+
+      &:hover {
+        color: #303336bb;
+      }
+    }
+  }
+}
