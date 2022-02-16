@@ -3,17 +3,19 @@ import {Link} from "react-router-dom"
 import axios from 'axios'
 import address from "../../../address-info"
 import PostComment from '../../components/PostComment/PostComment'
-import PostSummary from "../../components/PostSummary/PostSummary"
+import PostCommentUpload from "../../components/PostCommentUpload/PostCommentUpload"
 import "./PostContents.css"
 
 
 function PostContents({location}) {
     const post = location.state.post
     const [comments, setComments] = useState(null)
+    const [postComment, setPostComment] = useState(0)
+
     useEffect(()=>{
         axios.post(address.url + "/api/kauboard/community/get-comments", {articleIdx : post.idx})
         .then(res=>setComments(res.data.result))
-    })
+    },[postComment])
 
     return (
         <div className="post-contents">
@@ -47,6 +49,7 @@ function PostContents({location}) {
                 {comments ? comments.map((elem, idx)=>{
                     return <PostComment comment={elem} key={idx}/>
                 }) : null}
+                <PostCommentUpload updateArticleCommentsList={setPostComment} articleIdx={post.idx}/>
             </div>
             </div>
             </div>
