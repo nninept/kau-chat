@@ -1,5 +1,29 @@
 .post-comment {
+  padding: 10px;
   width: 100%;
   border: 1px gray solid;
   border-top: none;
+}
+
+.post-comment .user-data {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-comment .user-data img {
+  margin-right: 5px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.post-comment .comment-text {
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.post-comment .time {
+  margin: 5px 0;
+  font-weight: 100;
+  color: gray;
 }

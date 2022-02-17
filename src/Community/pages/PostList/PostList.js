@@ -18,7 +18,7 @@ function PostList({match}) {
     return (
         <div className="post-list">
             <div className='post-container'>
-            <PostUpload updateArticleList={setPostArticle}/>
+            <PostUpload updateArticleList={setPostArticle} postArticle={postArticle}/>
             {postList ? postList.map((elem,idx)=>{
                 return <PostSummary post={elem} key={idx}/>
             }) : <h1>Loading</h1>}

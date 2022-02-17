@@ -3,10 +3,10 @@ import axios from 'axios'
 import address from '../../../address-info'
 import "./PostUpload.css"
 
-function PostUpload({updateArticleList}) {
+function PostUpload({updateArticleList, postArticle}) {
     const [isPostClicked, setIsPostClicked] = useState(false)
-    const [title, setTitle] = useState(null)
-    const [contents, setContents] = useState(null)
+    const [title, setTitle] = useState("")
+    const [contents, setContents] = useState("")
     const onTitleClick = (e)=>{
         setIsPostClicked(!isPostClicked)
     }
@@ -20,12 +20,20 @@ function PostUpload({updateArticleList}) {
     }
 
     const onButtonClick = ()=>{
-        axios.post(address.url + "/api/kauboard/community/add-article",{title,contents,stcode:JSON.parse(window.localStorage.getItem("loginInfo")).id})
+        console.log(title.trim().length)
+        if(title.trim().length == 0)
+            alert("제목을 입력해 주세요")
+        else if(contents.trim().length == 0)
+            alert("내용을 입력해주세요")
+        else {
+        axios.post(address.url + "/api/kauboard/community/add-article",{title : title.trim(),contents : contents.trim(),stcode:JSON.parse(window.localStorage.getItem("loginInfo")).id})
         .then(res => {
             setIsPostClicked(false)
-            updateArticleList()
+            setTitle("")
+            setContents("")
+            updateArticleList(postArticle+1)
 
-        })
+        })}
     }
 
     return (

@@ -1,15 +1,15 @@
-.post-comment-upload {
+.post-comment-upload .upload-form {
   display: flex;
-  background-color: blue;
 }
 
-.post-comment-upload .post-text {
+.post-comment-upload .upload-form .post-text {
   flex: 1;
   font-size: 15px;
   padding: 10px 20px;
+  background-color: #eee;
 }
 
-.post-comment-upload .post-button {
+.post-comment-upload .upload-form .post-button {
   background-image: url(../img/white\ pen.png);
   background-color: red;
   background-size: cover;
@@ -18,6 +18,6 @@
   border: none;
 }
 
-.post-comment-upload .post-button:focus {
+.post-comment-upload .upload-form .post-button:focus {
   outline: none;
 }
