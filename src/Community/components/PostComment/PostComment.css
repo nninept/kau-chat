@@ -20,6 +20,7 @@
 .post-comment .comment-text {
   font-size: 15px;
   font-weight: 100;
+  word-break: break-all;
 }
 
 .post-comment .time {

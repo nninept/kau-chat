@@ -20,7 +20,6 @@ function PostUpload({updateArticleList, postArticle}) {
     }
 
     const onButtonClick = ()=>{
-        console.log(title.trim().length)
         if(title.trim().length == 0)
             alert("제목을 입력해 주세요")
         else if(contents.trim().length == 0)
