@@ -87,7 +87,7 @@ function PostContents({location}) {
             </div>
             <div className='article-comment'>
                 {comments ? comments.map((elem, idx)=>{
-                    return <PostComment comment={elem} key={idx}/>
+                    return <PostComment comment={elem} key={idx} updateArticle={updateArticle} articleUpdateCount={article}/>
                 }) : null}
                 <PostCommentUpload updateArticleCommentsList={updateArticle} postComment={article} articleIdx={post.idx}/>
             </div>

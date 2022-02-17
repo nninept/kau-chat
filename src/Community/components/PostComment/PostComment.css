@@ -5,6 +5,11 @@
   border-top: none;
 }
 
+.post-comment .header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .post-comment .user-data {
   display: flex;
   align-items: center;
@@ -15,6 +20,15 @@
   margin-right: 5px;
   height: 25px;
   border-radius: 5px;
+}
+
+.post-comment .header .modify-comment .delete {
+  font-size: 12px;
+  color: gray;
+}
+
+.post-comment .header .modify-comment .delete:hover {
+  cursor: pointer;
 }
 
 .post-comment .comment-text {
