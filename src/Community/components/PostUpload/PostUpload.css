@@ -1,0 +1,20 @@
+.post-upload {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-upload .post-textarea {
+  height: 50px;
+  border: 2px rgb(161, 161, 161) solid;
+  font-size: 15px;
+  padding: 14px 20px;
+  resize: none;
+}
+
+.post-upload .post-content {
+  border-top: none;
+  height: 400px;
+}
+.post-upload .post-textarea:focus {
+  outline: none;
+}

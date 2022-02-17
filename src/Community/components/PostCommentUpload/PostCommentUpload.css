@@ -1,0 +1,23 @@
+.post-comment-upload {
+  display: flex;
+}
+
+.post-comment-upload .post-text {
+  flex: 1;
+  font-size: 15px;
+  padding: 10px 20px;
+  background-color: #eee;
+}
+
+.post-comment-upload .post-button {
+  background-image: url(../img/white\ pen.png);
+  background-color: red;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border: none;
+}
+
+.post-comment-upload .post-button:focus {
+  outline: none;
+}

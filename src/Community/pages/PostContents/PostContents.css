@@ -1,0 +1,105 @@
+.post-contents {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+}
+
+.post-contents .prev-link {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-contents .prev-link img {
+  height: 100px;
+}
+
+.post-contents .article {
+  display: flex;
+  flex: 3;
+}
+.post-contents .article-container {
+  width: 500px;
+}
+
+.post-contents .article-container .article-post {
+  padding: 10px;
+  border: 1px gray solid;
+}
+
+.post-contents .article-post .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-contents .article-post .user-data {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.post-contents .article-post .user-data img {
+  height: 50px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.post-contents .article-post .user-text-data .nickname {
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.post-contents .article-post .user-text-data .date {
+  font-size: 12px;
+  font-weight: 100;
+  color: gray;
+}
+
+.post-contents .article-post .header .modify-article {
+  font-size: 12px;
+  color: gray;
+}
+
+.post-contents .article-post .header .modify-article .delete:hover {
+  cursor: pointer;
+}
+
+.post-contents .main-contents .contents {
+  font-size: 15px;
+  font-weight: 100;
+  word-break: break-all;
+}
+
+.post-contents .article-post .footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-contents .main-contents .meta-data {
+  font-size: 13px;
+  display: flex;
+}
+
+.post-contents .main-contents .meta-data .likes-count {
+  padding-left: 20px;
+  background: left / contain no-repeat url(../../components/img/votes.png);
+  height: 14px;
+  color: #c62917;
+}
+
+.post-contents .main-contents .meta-data .comment-count {
+  margin-left: 7px;
+  padding-left: 18px;
+  background: left / contain no-repeat url(../../components/img/comment.png);
+  height: 14px;
+  color: #0ca5af;
+}
+
+.post-contents .article-post .buttons .post-votes {
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+}

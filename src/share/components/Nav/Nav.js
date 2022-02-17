@@ -36,10 +36,10 @@ function Links(props) {
           link="/home/wiki"
         />
         <IconLink
-          title="역량관리시스템"
-          src="./manage.svg"
-          alt="역량관리시스템"
-          link="/home"
+          title="커뮤니티"
+          src="./community.png"
+          alt="커뮤니티"
+          link="/home/community"
         />
         <IconLink
           title="환경설정"

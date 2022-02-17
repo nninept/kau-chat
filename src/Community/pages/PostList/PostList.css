@@ -1,0 +1,25 @@
+.post-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  overflow: auto;
+}
+
+.post-list .post-container {
+  margin: 0px auto;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.post-list .post-container .post-upload {
+  padding-bottom: 10px;
+}
+
+/* PostSummary 첫번째 요소는 border-top이 없음 */
+.post-list .post-container > div:nth-child(2) {
+  margin-top: 10px;
+  border-top: 1px gray solid;
+}
