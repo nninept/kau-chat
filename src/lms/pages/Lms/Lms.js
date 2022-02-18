@@ -1,7 +1,9 @@
+import axios from "axios";
 import cheerio from "cheerio";
 import { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import LectureInfo from "../LectureInfo/LectureInfo";
+import address from "../../../address-info"
 import Overview from "../Overview/Overview";
 import "./Lms.scss";
 const { ipcRenderer } = window.require("electron");
@@ -15,7 +17,7 @@ function Lms({ match }) {
       let lecTemp = [];
       let $ = cheerio.load(res);
       let lec = $(
-        "#region-main > div > div.progress_courses > div.course_lists > ul "
+        ".course_lists ul"
       );
       lec.find("a").each((index, elem) => {
         let jElem = $(elem);
@@ -35,6 +37,7 @@ function Lms({ match }) {
         let noticeTemp = [];
         let $ = cheerio.load(res);
         let lec = $("#region-main > div > div > div.well.wellnopadding");
+        console.log(lec)
         lec.find("a").each((index, elem) => {
           let jElem = $(elem);
           let lecLink = jElem.attr("href");
