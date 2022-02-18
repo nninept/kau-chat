@@ -127,9 +127,9 @@ ipcMain.handle('login-post', async (event, arg) => {
 
 ipcMain.handle('get-lms', async (event, arg) => {
   
-  let lmsCookie = mainWindow.webContents.session.cookies.get({ url: 'http://lms.kau.ac.kr' })
+  let lmsCookie = await mainWindow.webContents.session.cookies.get({ url: 'http://lms.kau.ac.kr', name : "MoodleSession"})
   let pageData = await axios.get(arg, {headers: {
-    Cookie : `${lmsCookie.name}=${lmsCookie.value}`
+    Cookie : `${lmsCookie[0].name}=${lmsCookie[0].value}`
   }});
   return pageData.data
 })
