@@ -1,12 +1,10 @@
-import axios from "axios";
 import cheerio from "cheerio";
 import { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import LectureInfo from "../LectureInfo/LectureInfo";
-import address from "../../../address-info"
 import Overview from "../Overview/Overview";
 import "./Lms.scss";
-const { ipcRenderer } = window.require("electron");
+const { ipcRenderer} = window.require("electron");
 
 function Lms({ match }) {
   const [lecList, setLecList] = useState([]);
