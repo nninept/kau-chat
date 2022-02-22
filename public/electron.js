@@ -8,7 +8,7 @@ const http = require("http")
 const https = require("https")
 const qs = require('qs')
 // 1. Gabage Collection이 일어나지 않도록 함수 밖에 선언함.
-let mainWindow, subWindow;
+let mainWindow, subWindow, lmsWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -157,18 +157,18 @@ ipcMain.handle('open-password-search', async (e, arg) => {
 })
 
 ipcMain.handle('open-lms', async (e, arg) => {
-  if(!subWindow){
-    subWindow = new BrowserWindow({
+  if(!lmsWindow){
+    lmsWindow = new BrowserWindow({
       webPreferences: {
         nodeIntegration: true,
         partition:"persist:sessInfo"
       }
     })
-    await subWindow.loadURL('http://lms.kau.ac.kr')
-    subWindow.on('closed', () => {
-      subWindow = undefined;
+    await lmsWindow.loadURL('http://lms.kau.ac.kr')
+    lmsWindow.on('closed', () => {
+      lmsWindow = undefined;
     });//#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input
   } else {
-    subWindow.focus()
+    lmsWindow.focus()
   }
 })
