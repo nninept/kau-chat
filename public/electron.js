@@ -8,7 +8,7 @@ const http = require("http")
 const https = require("https")
 const qs = require('qs')
 // 1. Gabage Collection이 일어나지 않도록 함수 밖에 선언함.
-let mainWindow, subWindow, browser;
+let mainWindow, subWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -145,6 +145,15 @@ ipcMain.handle('open-npotal', async (e, arg) => {
   } else {
     subWindow.focus()
   }
+})
+
+ipcMain.handle('open-password-search', async (e, arg) => {
+  subWindow = new BrowserWindow({parent:mainWindow, modal:true})
+  await subWindow.loadURL('http://nportal.kau.ac.kr/webcrea/GB03/mdi/search_password.html')
+  subWindow.webContents.openDevTools()
+  subWindow.on('closed', () => {
+    subWindow = undefined;
+  });//#mainForm3 tbody tr:nth-child(1) td:nth-child(1) input
 })
 
 ipcMain.handle('open-lms', async (e, arg) => {
