@@ -21,10 +21,13 @@ function SecondPage() {
           newsList.push({
             src: elem
               .querySelector("p img")
-              .src.replace("localhost:3000", "old.kau.ac.kr"),
+              .src.replace("localhost:3000", "old.kau.ac.kr").replace("file://", "http://old.kau.ac.kr"),
             content: elem.querySelector("p").innerText,
             title: titles[index].innerText,
           });
+          console.log(elem
+            .querySelector("p img")
+            .src.replace("localhost:3000", "old.kau.ac.kr"))
         });
       setNewsContent(newsList);
     });
