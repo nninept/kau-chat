@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import ErrorMessage from "../components/Error/ErrorMessage";
 import "./Login.scss";
-import axios from "axios";
-import { ContactsOutlined } from "@material-ui/icons";
 const electron = window.require("electron");
 
 function isSessionOn() {
@@ -53,6 +51,10 @@ function Login(props) {
     } else setErrorState(!isLoginSuccess);
   };
 
+  const onPasswordSearchClick = ()=>{
+    electron.ipcRenderer.invoke("open-password-search");
+  }
+
   return (
     <div className="login-home">
       <h1 className="login-title"> KAU </h1>
@@ -83,7 +85,7 @@ function Login(props) {
         <input type="submit" value="Login" id="submit" />
         <a
           className="pass"
-          href="http://nportal.kau.ac.kr/webcrea/GB03/mdi/search_password.html"
+          onClick={onPasswordSearchClick}
         >
           Forgot Password?
         </a>
