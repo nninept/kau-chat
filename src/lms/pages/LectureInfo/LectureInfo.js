@@ -43,7 +43,8 @@ function LectureInfo({ location }) {
           let contentLink = elem.attr("href");
           let imgSrc = elem.find("img").attr("src");
           let text = elem.find(".instancename").text();
-          weekBlockContents.push({ contentLink, imgSrc, text });
+          let type = elem.find(".accesshide").text().trim()
+          weekBlockContents.push({ contentLink, imgSrc, text, type });
         });
         console.log(title);
         return { title, weekBlockContents };
