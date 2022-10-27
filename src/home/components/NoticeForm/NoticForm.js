@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./NoticeForm.scss";
 
-const { shell } = window.require("electron");
+// const { shell } = window.require("electron");
 function NoticeForm({ noticeInfo, noticeList, category }) {
   const onClick = (e) => {
     const domain =
       category == "general"
         ? "http://www.hangkong.ac.kr/web/pages/"
         : "http://college.kau.ac.kr/web/pages/";
-    shell.openExternal(domain + e.target.dataset.gcid);
+    // shell.openExternal(domain + e.target.dataset.gcid);
   };
   return (
     <div className="school-notice-form">

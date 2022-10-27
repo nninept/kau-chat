@@ -2,7 +2,7 @@
   "name": "kauboard2",
   "version": "0.1.0",
   "private": true,
-  "main": "public/electron.js",
+  "main": "public/index.js",
   "homepage": "./",
   "dependencies": {
     "@material-ui/core": "^4.11.3",

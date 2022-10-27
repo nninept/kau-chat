@@ -5,7 +5,7 @@ import Arrow from "../Arrow/Arrow";
 import axios from 'axios'
 import address from "../../../address-info"
 
-const {shell} = window.require('electron')
+// const {shell} = window.require('electron')
 const Virus = () => {
   const [seoul, setSeoul] = useState({});
   const [gyeonggi, setGyeonggi] = useState({});
@@ -25,7 +25,7 @@ const Virus = () => {
   }, []);
 
   const openVirusInfo = ()=>{
-    shell.openExternal('http://ncov.mohw.go.kr/')
+    // shell.openExternal('http://ncov.mohw.go.kr/')
   }
   return (
     <div className="virus-background" >

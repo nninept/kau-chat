@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import ErrorMessage from "../components/Error/ErrorMessage";
 import "./Login.scss";
-const electron = window.require("electron");
+import { useHistory} from 'react-router-dom'
+import axios from "axios";
+
+import address from "../../address-info";
+
 
 function isSessionOn() {
   let sessStorage = localStorage.getItem("loginInfo");
@@ -10,13 +14,17 @@ function isSessionOn() {
 }
 
 function Login(props) {
-  const history = props.history;
-  useEffect(() => {
+  let history = useHistory()
+  useEffect(async () => {
     const loginInfo = isSessionOn();
-    if (loginInfo)
-      electron.ipcRenderer
-        .invoke("login-post", loginInfo)
-        .then((res) => history.push("/home"));
+    if (loginInfo){
+
+      // electron.ipcRenderer
+      //   .invoke("login-post", loginInfo)
+      //   .then((res) => history.push("/home"));
+      let login_sucess = await axios.post(address.url + "/api/homepage/login",loginInfo)
+      history.push("/home")
+    }
   }, []);
 
   const [enteredId, setEnteredId] = useState("");
@@ -33,7 +41,7 @@ function Login(props) {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
-    const isLoginSuccess = await electron.ipcRenderer.invoke("login-post", {
+    const isLoginSuccess = await axios.post(address.url + "/api/homepage/login",{
       id: enteredId,
       pwd: enteredPwd,
     });
@@ -51,9 +59,9 @@ function Login(props) {
     } else setErrorState(!isLoginSuccess);
   };
 
-  const onPasswordSearchClick = ()=>{
-    electron.ipcRenderer.invoke("open-password-search");
-  }
+  // const onPasswordSearchClick = ()=>{
+  //   electron.ipcRenderer.invoke("open-password-search");
+  // }
 
   return (
     <div className="login-home">
@@ -85,7 +93,8 @@ function Login(props) {
         <input type="submit" value="Login" id="submit" />
         <a
           className="pass"
-          onClick={onPasswordSearchClick}
+          href="http://nportal.kau.ac.kr/webcrea/GB03/mdi/search_password.html"
+          // onClick={onPasswordSearchClick}
         >
           Forgot Password?
         </a>

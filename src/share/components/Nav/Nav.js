@@ -18,22 +18,10 @@ function Links(props) {
         />
         <IconLink title="LMS" src="./lms.svg" alt="LMS" link="/home/lms" />
         <IconLink
-          title="종합정보시스템"
-          src="./system.svg"
-          alt="종합정보시스템"
-          link="npotal"
-        />
-        <IconLink
           title="채팅방"
           src="./job.svg"
           alt="채팅방"
           link="/home/chat"
-        />
-        <IconLink
-          title="KAU 위키"
-          src="./pick.svg"
-          alt="KAU 위키"
-          link="/home/wiki"
         />
         <IconLink
           title="커뮤니티"
@@ -41,12 +29,7 @@ function Links(props) {
           alt="커뮤니티"
           link="/home/community"
         />
-        <IconLink
-          title="환경설정"
-          src="./setting.png"
-          alt="환경설정"
-          link="/home"
-        />
+
         <Link className="logout" to={"/"} onClick={logoutHandler}>
           Logout
         </Link>

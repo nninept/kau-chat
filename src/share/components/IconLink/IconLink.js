@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./IconLink.scss";
 
-const { ipcRenderer } = window.require("electron");
+// const { ipcRenderer } = window.require("electron");
 /*
 Links 안에서 사용할 링크
 */
@@ -10,7 +10,7 @@ Links 안에서 사용할 링크
 function IconLink({ link, src, alt, title }) {
   ///////////////////////////////////openPotal?
   const openPotal = () => {
-    ipcRenderer.invoke("open-npotal");
+    // ipcRenderer.invoke("open-npotal");
   };
 
   return (
