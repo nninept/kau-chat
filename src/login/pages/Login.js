@@ -45,8 +45,7 @@ function Login(props) {
       id: enteredId,
       pwd: enteredPwd,
     });
-    console.log(isLoginSuccess);
-    if (isLoginSuccess) {
+    if (isLoginSuccess.data) {
       await window.localStorage.setItem(
         "loginInfo",
         JSON.stringify({ id: enteredId, pwd: enteredPwd })
@@ -56,7 +55,7 @@ function Login(props) {
         enteredId.substr(4, 3)
       );
       history.push("/home");
-    } else setErrorState(!isLoginSuccess);
+    } else setErrorState(!isLoginSuccess.data);
   };
 
   // const onPasswordSearchClick = ()=>{
